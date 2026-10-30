@@ -265,3 +265,15 @@ describe('dropBlocks', () => {
     expect(rewrite(md, toolbox({ dropBlocks: ['| Plex rows |'] })).markdown).toBe(md);
   });
 });
+
+describe('raw scripts', () => {
+  test('fail the page, so a script in a tool repository never reaches the site', () => {
+    expect(() => rewrite('Text\n\n<script>alert(1)</script>\n', toolbox())).toThrow(/script.*docs\/INSTALL\.md/i);
+    expect(() => rewrite('Inline <script src="/x.js"></script> here.\n', toolbox())).toThrow(/script/i);
+  });
+
+  test('are fine inside code', () => {
+    const md = '```html\n<script>alert(1)</script>\n```\n\nUse `<script>` tags.\n';
+    expect(rewrite(md, toolbox()).markdown).toBe(md);
+  });
+});
