@@ -10,7 +10,8 @@
     "build": "npm run fetch && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check:dist": "node scripts/check-dist.mjs dist"
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.8",

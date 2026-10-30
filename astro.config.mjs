@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import externalScripts from './scripts/lib/external-scripts.mjs';
 
 const tools = [
   { label: 'Helix Toolbox', directory: 'toolbox' },
@@ -52,5 +53,6 @@ export default defineConfig({
       lastUpdated: false,
       pagefind: true,
     }),
+    externalScripts(),
   ],
 });
