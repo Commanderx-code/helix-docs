@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>The window | Helix Tech Docs</title><link rel="canonical" href="https://docs.helixtech.app/toolbox/gui/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.4"/><meta name="generator" content="Starlight v0.42.8"/><meta property="og:title" content="The window"/><meta property="og:type" content="article"/><meta property="og:url" content="https://docs.helixtech.app/toolbox/gui/"/><meta property="og:locale" content="en_US"/><meta property="og:description" content="helix-toolbox-gui is Helix Toolbox in a window: a Tauri 2 application on the same crates as the command line and the terminal interface."/><meta property="og:site_name" content="Helix Tech Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="helix-toolbox-gui is Helix Toolbox in a window: a Tauri 2 application on the same crates as the command line and the terminal interface."/><meta property="og:image" content="https://docs.helixtech.app/og/toolbox.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="Helix Toolbox documentation"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#11141c"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><script src="/_scripts/556a395a9e1aa928.js"></script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.COzelJ9Z.css"><link rel="stylesheet" href="/_astro/data.U1EK5lRe.css"><script type="module" src="/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">Skip to content</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-nen7h5rs"><div class="title-wrapper sl-flex astro-nen7h5rs"><a href="/" class="site-title sl-flex astro-6rvad3va"><img class="light:sl-hidden print:hidden astro-6rvad3va" alt="Helix Tech" src="/_astro/logo-on-dark.CSnaoQmP.png" width="1889" height="457"><img class="dark:sl-hidden print:block astro-6rvad3va" alt="Helix Tech" src="/_astro/logo-on-light.YO6SStN0.png" width="1889" height="457"><span class="sr-only astro-6rvad3va" translate="no">Helix Tech Docs</span></a></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-nen7h5rs"><div class="sl-flex social-icons astro-nen7h5rs"><a class="home astro-o2gh7vpa" href="https://helixtech.app/">helixtech.app</a><a href="https://github.com/Commanderx-code" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script src="/_scripts/1a4641467bd2ba1b.js"></script><script type="module" src="/_astro/ThemeSelect.astro_astro_type_script_index_0_lang.COBTTKEJ.js"></script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">Menu</span></button><script type="module" src="/_astro/PageFrame.astro_astro_type_script_index_0_lang.DSDKmmqG.js"></script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Djc9ZKGJ.js"></script><script type="module" src="/_astro/LanguageSelect.astro_astro_type_script_index_0_lang.DZJqHYaV.js"></script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><div class="sidebar-search astro-wv7whodv"><site-search class="astro-wv7whodv astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">Cancel</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script src="/_scripts/7ffcc0504ef8b9c7.js"></script></div><sl-sidebar-state-persist data-hash="1e128kz" class="astro-ipdry5cl"><script aria-hidden="true" src="/_scripts/c17db23800de57e3.js"></script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Helix Toolbox</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/toolbox/walkthrough/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Walkthrough</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Installing Helix Toolbox</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Using Helix Toolbox</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/gui/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The window</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/catalog/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The catalog and plans</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/reference/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">How Helix Toolbox works</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/json/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">JSON output</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/events/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Execution events</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/migration/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Migration</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/stability/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">What stays the same in 1.x</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/security/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Security</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/reporting/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Testing and reporting problems</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Helix Boot</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/boot/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Helix Boot: the documentation</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Installing and updating</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/tools/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">What&#39;s on the stick</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/look/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The boot menu&#39;s look</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/theming/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">HELIXBOOT themes</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/tool-icons/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Boot-menu icons</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/packs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Packs: the whole stick in one file</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/engine/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The engine, and how it keeps a stick safe</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/lazarus-pe/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Lazarus PE</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/testing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Testing on real hardware</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/code-signing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Code signing policy</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">webOS Launcher</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/webos-launcher/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">webOS Launcher</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/controls/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Controls</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/setup/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Setup</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/settings/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Settings in config.json</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/automatic-updates/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Automatic updates</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/rooted-tv/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">On a rooted TV</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/developer-mode/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Keeping Developer Mode alive</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/limits/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">What it can&#39;t do</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Touchdown</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/touchdown/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Touchdown</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/features/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Features</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/quick-start/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Quick start</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/screenshots/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Screenshots</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/controls/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Controls</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/favorite-team/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Favorite team and theme</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/options/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Command-line options</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/data/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Data and refresh behavior</span></a></li></ul></details></li></ul><script aria-hidden="true" src="/_scripts/ede095e23b6caf8b.js"></script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a class="home astro-o2gh7vpa" href="https://helixtech.app/">helixtech.app</a><a href="https://github.com/Commanderx-code" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script src="/_scripts/1a4641467bd2ba1b.js"></script></div></div><p class="sidebar-note astro-wv7whodv">Something wrong or missing? <a href="https://github.com/Commanderx-code/helix-docs/issues/new" class="astro-wv7whodv">Open an issue</a>.</p></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module" src="/_astro/Page.astro_astro_type_script_index_0_lang.DC4zszI0.js"></script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">On this page<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#installing" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Installing</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-screens" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The screens</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-keyboard" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The keyboard</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#how-it-is-built" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">How it is built</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#working-on-it" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Working on it</span></a></li></ul></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#installing" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Installing</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-screens" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The screens</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-keyboard" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The keyboard</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#how-it-is-built" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">How it is built</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#working-on-it" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">Working on it</span></a></li></ul></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="en" dir="ltr"><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><h1 id="_top" class="astro-bebwqqxs">The window</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p><code dir="auto">helix-toolbox-gui</code> is Helix Toolbox in a window: a Tauri 2 application on
+the same crates as the command line and the terminal interface. It shows
+the catalog and how each package entry stands, keeps the Install Plan, and
+runs a plan in an embedded terminal, with the same checks before a run, the
+same confirmation, verification and history. Every change to the machine
+stays in the engine: the window asks for a plan, shows what came back, and
+draws the events of the run (<a href="/toolbox/events/">EVENTS.md</a>).</p>
+<p><img alt="The window’s Applications screen: the entries of an area with their status and flags, and the details of the selected one" loading="lazy" decoding="async" width="1280" height="820" src="/_astro/gui-applications.CfDfrlwK_Z2oeIsX.webp"></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="installing">Installing</h2><a class="sl-anchor-link" href="#installing"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Installing”</span></a></div>
+<p>Each release has the window for x86_64 and aarch64 (ARM64) as a Debian
+package, an RPM and an AppImage. Install the <code dir="auto">helix-toolbox</code> package first
+(<a href="/toolbox/install/">INSTALL.md</a>): the window finds the command line beside itself
+or on the PATH and runs it for the built-in steps, such as the system
+report, and the Debian and RPM packages require it.</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.w36nc.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">sudo</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">pacman</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-U</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">helix-toolbox-gui-1.10.0-1-x86_64.pkg.tar.zst</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#919F9F;--1:#5F636F"># Arch and derivatives (aarch64 on ARM64)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">sudo</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">apt</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">install</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">./helix-toolbox-gui_1.10.0_amd64.deb</span><span style="--0:#D6DEEB;--1:#403F53">          </span><span style="--0:#919F9F;--1:#5F636F"># Debian, Ubuntu (arm64 on ARM64)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">sudo</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">dnf</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">install</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">./helix-toolbox-gui-1.10.0-1.x86_64.rpm</span><span style="--0:#D6DEEB;--1:#403F53">       </span><span style="--0:#919F9F;--1:#5F636F"># Fedora (aarch64 on ARM64)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">sudo</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">zypper</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">install</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--allow-unsigned-rpm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">./helix-toolbox-gui-1.10.0-1.x86_64.rpm</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#919F9F;--1:#5F636F"># openSUSE</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">chmod</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">+x</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">helix-toolbox-gui_1.10.0_amd64.AppImage</span><span style="--0:#D6DEEB;--1:#403F53"> &amp;&amp; </span><span style="--0:#82AAFF;--1:#3B61B0">./helix-toolbox-gui_1.10.0_amd64.AppImage</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#919F9F;--1:#5F636F"># any distribution</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="sudo pacman -U helix-toolbox-gui-1.10.0-1-x86_64.pkg.tar.zst   # Arch and derivatives (aarch64 on ARM64)sudo apt install ./helix-toolbox-gui_1.10.0_amd64.deb          # Debian, Ubuntu (arm64 on ARM64)sudo dnf install ./helix-toolbox-gui-1.10.0-1.x86_64.rpm       # Fedora (aarch64 on ARM64)sudo zypper install --allow-unsigned-rpm ./helix-toolbox-gui-1.10.0-1.x86_64.rpm   # openSUSEchmod +x helix-toolbox-gui_1.10.0_amd64.AppImage &amp;&amp; ./helix-toolbox-gui_1.10.0_amd64.AppImage   # any distribution"><div></div></button></div></figure></div>
+<p>On Arch, the pacman repository in <a href="/toolbox/install/#the-arch-repository">INSTALL.md</a>
+has the window’s package too, updated with the system. The Updates screen’s
+Helix Toolbox row updates the window’s package together with the command
+line’s, and an AppImage in place.</p>
+<p>The packages add a menu entry, <strong>Helix Toolbox</strong>, with the icon (drawn flat
+at menu sizes, 16 to 48 pixels, where the full picture would blur). The
+window is drawn by WebKitGTK 4.1, which the Debian and RPM packages install
+with it; the AppImage carries its libraries. The files are checked like the
+others: <code dir="auto">sha256sum --check --ignore-missing SHA256SUMS</code> and
+<code dir="auto">gh attestation verify &lt;file&gt; --repo Commanderx-code/Helix-toolbox</code>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-screens">The screens</h2><a class="sl-anchor-link" href="#the-screens"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The screens”</span></a></div>
+<p>Each screen’s header names where it sits in the sidebar above its title,
+with the screen’s buttons beside it.</p>
+<ul>
+<li><strong>Dashboard</strong>: a welcome by your account’s full name (else your login
+name), a card saying what Helix Toolbox is for on this distribution, how
+many package entries are installed or have an update waiting, what is
+queued and pinned, the machine’s facts (the same as the terminal
+interface’s System Overview), and the quick actions.</li>
+<li><strong>The areas</strong> (Applications, Configurations and the rest of the
+catalog): the entries in their groups, each with its status (Installed,
+Update, Managed, Not installed, from where and at which version) and its
+flags. The search field looks through every area. Ticking an entry
+queues it in the Install Plan; selecting one shows its details, with
+<strong>Add to plan</strong>, <strong>Run now</strong> and <strong>Pin</strong>. An entry that runs on its own
+(interactive installers, for example) has <strong>Run now</strong> only, as in the
+terminal interface. A package entry that offers removal and is
+installed has <strong>Remove…</strong> too, the terminal interface’s <code dir="auto">r</code>: the package
+manager or Flatpak that installed it removes it, after the same
+confirmation. <strong>Check it now</strong> makes the entry’s checks, read-only, as
+<code dir="auto">c</code> does in the terminal interface: whether what it installs and sets up
+is still there.</li>
+<li><strong>Favorites</strong>: the pinned entries, the same <code dir="auto">favorites.toml</code> the
+terminal interface keeps.</li>
+<li><strong>Install Plan</strong>: the queue, in the order it will be planned; entries can
+be moved or taken out. <strong>Review and run</strong> has the engine plan it.</li>
+<li><strong>History</strong>: past runs from every interface, newest first. A run that
+worked has <strong>Report it worked…</strong>: a hardware report of it, to read,
+copy or open as an issue in the browser, filled in.</li>
+</ul>
+<p>Before a run, the confirmation shows what the terminal interface shows:
+the risk and whether the run asks for your password, the findings of the
+checks before a run, warnings about how entries were tested, what happens
+after a failed step (from Settings in the terminal interface, which also
+decides whether a snapshot is taken first), and each step with the command
+it runs. A plan the checks block opens “Cannot run yet” instead, and
+nothing is changed.</p>
+<p><strong>What it changes</strong>, in the confirmation, is the terminal interface’s
+change preview: each step’s expected changes to files, packages and
+services, marked ✓ known, ~ expected or ? not known in advance, and a
+file now and afterward <strong>side by side</strong> where the new contents can be
+worked out without writing anything. When a dotfiles entry reads a pinned
+source that is not downloaded yet, <strong>Download the source</strong> fetches it
+(and changes nothing else) so its files can be compared too.</p>
+<p>The run opens in its own panel: the steps on the left, the terminal on the
+right. The terminal is a real one, the same pseudo-terminal the terminal
+interface uses: type into it when a step asks something, including the
+<code dir="auto">sudo</code> password prompt, which does not echo. <strong>Stop</strong> hangs the run up; a
+second <strong>Stop</strong> kills what ignored that. When the run ends, the result and
+the checks of the package steps appear below, and <strong>Close</strong> records the run
+in the history. A run from the Install Plan leaves in it what did not
+finish, as the terminal interface does: a queued profile’s unfinished
+entries take its place, and an entry that needed nothing leaves; a run
+that could not start leaves the Install Plan as it was. Then the
+window reads again what the run can change, as the engine’s run session
+says: how entries stand, Updates, History and the tool screens.</p>
+<p>The other tools, under <strong>More tools</strong> in the sidebar, in four groups that
+open and close: <strong>Health</strong> (Helix Doctor, Hardware, Performance, Services,
+Storage), <strong>Upkeep</strong> (Updates, Drift, Reliability), <strong>Safekeeping</strong>
+(Backups, Restic, Recovery, Migration, Offline bundles) and <strong>Workspace</strong>
+(Repositories, Home Manager, Configs, Desktop). The group of the screen
+shown opens by itself, and the window remembers which you left open; a
+closed group shows how many updates wait inside it. Settings stays below
+them.</p>
+<p><img alt="The window’s Helix Doctor screen: the health checks with their state, and what the selected one found" loading="lazy" decoding="async" width="1280" height="820" src="/_astro/gui-doctor.69y5mxCS_Z1LkR8x.webp"></p>
+<ul>
+<li><strong>Helix Doctor</strong>: the health checks, each with what it found and what
+to do; a check with a repair, or an entry that addresses it, has
+<strong>Repair…</strong>, which confirms like any run. The Helix Doctor area’s
+reports and tools are listed below the checks.</li>
+<li><strong>Updates</strong>: what each package tool has waiting, from what it already
+knows, or checked online; <strong>Update this channel</strong> or <strong>Update all</strong>
+runs the tools, and the entries with an update can be updated one by
+one or all together.</li>
+<li><strong>Backups</strong>: the copies entries left beside the files they changed;
+<strong>Restore…</strong> moves the current file aside first.</li>
+<li><strong>Drift</strong>: how this machine differs from a saved baseline or a profile,
+the entries that would put back what is missing (add them to the plan
+or run them), and <strong>Save this machine as a baseline</strong>.</li>
+<li><strong>Reliability</strong>: how far each entry has been tested, critical ones
+first, with <strong>Where it comes from</strong>, the trust inspection, and <strong>Report
+it worked…</strong> for an entry that ran here.</li>
+<li><strong>Hardware</strong>: firmware updates through fwupd (typing FIRMWARE first, as
+in the terminal interface), disks with <strong>Check health…</strong> (SMART, after
+confirmation), temperatures, batteries, and the PCI and USB devices.</li>
+<li><strong>Services</strong>: the machine’s and your session’s services, timers and
+sockets, and what starts at login, with a filter; a unit’s details say
+what needs it and what stopping it costs, then <strong>Start…</strong>, <strong>Stop…</strong>,
+<strong>Restart…</strong>, <strong>Enable…</strong> or <strong>Disable…</strong> review the plan, as <code dir="auto">s</code>, <code dir="auto">e</code>
+and <code dir="auto">R</code> do in the terminal interface. An application at login is turned
+off or on for you.</li>
+<li><strong>Storage</strong>: the space on each file system, what can be cleaned with what
+each frees and <strong>Clean…</strong> to review its plan, and what is never cleaned
+here (kernels, snapshots, configuration backups).</li>
+<li><strong>Performance</strong>: this boot’s parts as one bar, the boot set beside an
+earlier one chosen from those recorded (what changed, the kernel, the
+runs in between), what the login screen waited for, the slowest
+services, the machine now, and hints, with <strong>Turn it off…</strong> where a
+service change would help.</li>
+<li><strong>Recovery</strong>: each readiness check with what it found; <strong>Check
+snapshots…</strong> reviews the read-only snapshot check, and <strong>Set it up
+with…</strong> an entry that would help.</li>
+<li><strong>Migration</strong>: what this machine has, with <strong>Export…</strong> to write it to a
+file through the file chooser, and <strong>Open…</strong> (or a path typed in and
+<strong>Read it</strong>) to read one made on another machine: what it would install here, what is here already, what
+cannot be, and the packages left to you, with <strong>Install…</strong> to review the
+plan.</li>
+<li><strong>Restic</strong>: the repository and how its password is found, with <strong>Back
+up…</strong>, <strong>Check…</strong> and the daily or weekly timer; the snapshots, each
+<strong>Browse</strong>d a folder at a time with <strong>Restore this…</strong>; a file’s history
+with <strong>Restore this version…</strong>; a restore into a new folder; and
+recovery tests, a file’s SHA-256 recorded and <strong>Test…</strong> against a
+snapshot.</li>
+<li><strong>Repositories</strong>: the Git repositories under your project folders,
+favorites (the star) first; one opened shows its changes with <strong>Diff</strong>
+and <strong>Stage…</strong> or <strong>Unstage…</strong>, <strong>Stage every change…</strong>, a commit message
+and <strong>Commit…</strong>, <strong>Fetch…</strong>, <strong>Pull…</strong> and <strong>Push…</strong> (or <strong>Publish…</strong>),
+its branches with <strong>Switch…</strong> and <strong>Create…</strong>, its stashes with
+<strong>Apply…</strong> and <strong>Stash…</strong>, its tasks with <strong>Run…</strong> and <strong>Keep</strong> for a
+command of your own, and its recent commits.</li>
+<li><strong>Configs</strong>: Ghostty’s and Fastfetch’s configuration, each with the
+file edited, where its program reads it, whether it checks and its Home
+Manager flake; the common fields with <strong>Apply</strong> each, the whole file in a
+text area, <strong>Check</strong>, <strong>Save…</strong> (the plan, the file side by side) and
+<strong>Discard changes</strong>, and the backups kept with <strong>Put back…</strong>.</li>
+<li><strong>Home Manager</strong>: the configuration and its repository, with <strong>Build…</strong>,
+<strong>Switch…</strong> and <strong>Pull…</strong>; the generations, the active one marked and
+<strong>Go back to it…</strong> on the others; and which configuration files Home
+Manager links.</li>
+<li><strong>Offline bundles</strong>: the Install Plan’s entries and the packages they
+need, downloaded with Helix Toolbox into a new folder for a machine of
+the same distribution without reliable internet. <strong>Check what it
+needs</strong> says which entries go offline and what is downloaded; <strong>Make
+the bundle…</strong> runs <code dir="auto">helix-toolbox bundle create</code> in the run’s terminal
+and installs nothing here. <strong>Check it</strong> verifies a bundle (made for this
+machine, every file matching its checksum); <strong>Install from it…</strong>
+installs its packages from its files after confirmation.</li>
+<li><strong>Desktop</strong>: the running desktop and its appearance, <strong>Save this look</strong>,
+the saved looks put back after confirmation, and the entries for this
+desktop.</li>
+<li><strong>Settings</strong>: what happens after a failed step and whether a snapshot
+is taken first, the same <code dir="auto">settings.toml</code> the terminal interface keeps
+its own look in, and <strong>Set up this machine…</strong>, the setup wizard again.
+<strong>Notifications</strong> turn on or off at once, as <code dir="auto">helix-toolbox notifications</code> does (GUIDE.md): a timer of the user’s own checks every 6
+hours for updates waiting, and if chosen for new health problems and for
+changes since a Drift baseline, and shows a desktop notification whose
+button opens this window on Updates, Helix Doctor or Drift.
+<strong>Appearance</strong> chooses the window’s theme: <strong>Follow the desktop</strong> (the
+default: light or dark as the desktop’s color scheme is, through GTK,
+and changing with it), <strong>Dark</strong> or <strong>Light</strong>. It applies at once and is
+kept as <code dir="auto">window_theme</code>; the run’s terminal stays dark in either.
+<strong>Make a bug report…</strong> (also in the palette) shows what
+<code dir="auto">helix-toolbox report</code> prints, with the window’s version, how it was
+installed, WebKitGTK, the desktop and the theme after it, and copies it
+to paste into an issue.
+The Install Plan’s <strong>Save as profile</strong> adds a profile to the Profiles
+area; a profile’s details have <strong>Put its entries in the plan</strong>, to queue
+its entries one by one and change the plan before it runs. Your own
+profiles, under Your profiles, also have <strong>Export…</strong>, which writes one to
+a file to share, and <strong>Delete…</strong>, once DELETE is typed; <strong>Import a
+profile…</strong> at the top of the Profiles area adds one from a file, checked
+against the catalog, as <code dir="auto">helix-toolbox profile import</code> does. Both files
+are chosen in the desktop’s file chooser.</li>
+</ul>
+<p>Two things work from every screen:</p>
+<ul>
+<li><strong>The setup wizard</strong> opens by itself on the first start, as in the
+terminal interface: what this machine is (distribution, package tools,
+desktop, graphics, laptop or not), a choice of workstation from
+<code dir="auto">catalog/setup.toml</code> (Developer, Gaming, Privacy, Minimal, Custom), then
+that workstation’s entries for this machine, ticked where they can run
+and are not installed. It ends by filling the Install Plan for review; it
+runs nothing. Closing it remembers, in <code dir="auto">settings.toml</code>, that it was
+offered; the Dashboard and Settings open it again.</li>
+<li><strong>The command palette</strong>, <code dir="auto">Ctrl K</code> or <strong>Search…</strong> in the header: one list
+of the screens, actions (check updates online, clear or run the Install
+Plan, save it as a profile, save a baseline, update every entry, the
+wizard) and every entry (show it, or inspect where it comes from),
+ranked as the terminal interface ranks its search.</li>
+</ul>
+<p><img alt="The window’s Hardware screen: firmware, disks with their health check, and the temperature sensors" loading="lazy" decoding="async" width="1280" height="820" src="/_astro/gui-hardware.ByhZKSZr_ZwOKoc.webp"></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-keyboard">The keyboard</h2><a class="sl-anchor-link" href="#the-keyboard"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The keyboard”</span></a></div>
+<p>Everything works without a mouse:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Keys</th>
+<th style="text-align: left">Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">Ctrl K</code></td>
+<td style="text-align: left">the command palette, from any screen</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">Tab</code>, <code dir="auto">Shift Tab</code></td>
+<td style="text-align: left">the sidebar, a screen’s list, its details and buttons; each list is one stop</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">↑</code> <code dir="auto">↓</code>, <code dir="auto">Home</code> <code dir="auto">End</code></td>
+<td style="text-align: left">through the sidebar or a list; in a list the row reached is selected, as the terminal interface’s cursor selects</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">Space</code></td>
+<td style="text-align: left">on an entry, put it in the Install Plan or take it out, as in the terminal interface</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">Enter</code></td>
+<td style="text-align: left">the focused button or row</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">Esc</code></td>
+<td style="text-align: left">close a dialog; in the change preview, back to the confirmation</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">Ctrl Tab</code></td>
+<td style="text-align: left">out of the run’s terminal, where <code dir="auto">Tab</code> is the program’s</td>
+</tr>
+</tbody>
+</table>
+<p>A dialog takes the focus when it opens (the confirmation starts on
+<strong>Cancel</strong>, so <code dir="auto">Enter</code> never runs a plan by accident), keeps <code dir="auto">Tab</code> inside
+it, and gives the focus back when it closes. Controls are labeled for
+screen readers, the run’s progress and messages are announced as they
+change, and every text color has at least 4.5:1 contrast in both themes.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="how-it-is-built">How it is built</h2><a class="sl-anchor-link" href="#how-it-is-built"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “How it is built”</span></a></div>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">apps/helix-toolbox-gui/</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">src/                 the frontend: Svelte 5 and TypeScript, built with Vite</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">lib/api.ts         the commands of the Rust side, and sample answers for a browser</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">lib/state.svelte.ts  the window's state: catalog, statuses, queue, pins</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">lib/search.ts      the search ranking, the same as the engine's</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">lib/*.test.ts      the tests of the modules beside them (`npm test`)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">components/        header, sidebar, entry rows and details, the confirmation, the run panel (xterm.js), the wizard, the palette</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">screens/           Dashboard, Area, Favorites, Plan, History and the other tools</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">tests/drive/         the smoke test's drive script and its workstations</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">src-tauri/           the Rust side, a Cargo workspace of its own</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">src/main.rs        the commands, and the run's events forwarded on a Tauri channel</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">src/views.rs       what the window reads, built field by field from the engine's types and display rows</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">tauri.conf.json    the window, the content security policy, the bundles</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">icons/             the icon in the sizes the bundles ship, written by scripts/icons.sh</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="apps/helix-toolbox-gui/  src/                 the frontend: Svelte 5 and TypeScript, built with Vite    lib/api.ts         the commands of the Rust side, and sample answers for a browser    lib/state.svelte.ts  the window&#x27;s state: catalog, statuses, queue, pins    lib/search.ts      the search ranking, the same as the engine&#x27;s    lib/*.test.ts      the tests of the modules beside them (&#x60;npm test&#x60;)    components/        header, sidebar, entry rows and details, the confirmation, the run panel (xterm.js), the wizard, the palette    screens/           Dashboard, Area, Favorites, Plan, History and the other tools  tests/drive/         the smoke test&#x27;s drive script and its workstations  src-tauri/           the Rust side, a Cargo workspace of its own    src/main.rs        the commands, and the run&#x27;s events forwarded on a Tauri channel    src/views.rs       what the window reads, built field by field from the engine&#x27;s types and display rows    tauri.conf.json    the window, the content security policy, the bundles    icons/             the icon in the sizes the bundles ship, written by scripts/icons.sh"><div></div></button></div></figure></div>
+<p>The Rust side is a separate workspace because it needs WebKitGTK and the
+built frontend; the command line stays a static program without either.
+Its commands:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Command</th>
+<th style="text-align: left">Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code dir="auto">about</code></td>
+<td style="text-align: left">the version, the machine’s facts, whether the command line was found</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">areas</code></td>
+<td style="text-align: left">the catalog’s areas, groups and entries</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">statuses</code></td>
+<td style="text-align: left">how each package entry stands, by id; asks the package managers, off the window’s thread</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">favorites</code>, <code dir="auto">pin</code></td>
+<td style="text-align: left">the pinned entries, and pinning one</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">prepare</code></td>
+<td style="text-align: left">plans entries and runs the checks before a run (<code dir="auto">confirmation::prepare()</code>); a plan ready to run waits for <code dir="auto">run</code> as its run session</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">cancel</code></td>
+<td style="text-align: left">forgets a plan that was not confirmed</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">run</code></td>
+<td style="text-align: left">starts the confirmed plan in a terminal of the given size and sends its events to a channel: <code dir="auto">ExecutionEvent</code>’s JSON form, output as base64</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">write</code>, <code dir="auto">resize</code>, <code dir="auto">stop</code></td>
+<td style="text-align: left">what the user typed, the terminal’s size, a stop</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">close_run</code></td>
+<td style="text-align: left">stops a run still going and records it in the history; which of the queued entries it is given remain (all of them when the run could not start), what to read again (<code dir="auto">statuses</code>, <code dir="auto">updates</code>, <code dir="auto">tools</code>, <code dir="auto">history</code>) and why it was not recorded, if it was not</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">runs</code></td>
+<td style="text-align: left">the history</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">save_profile</code></td>
+<td style="text-align: left">the Install Plan as a profile</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">bug_report</code>, <code dir="auto">copy_text</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox report</code> with the window’s facts, and text put on the clipboard</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_services</code>, <code dir="auto">service_details</code>, <code dir="auto">prepare_service</code>, <code dir="auto">prepare_autostart</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox services</code> and <code dir="auto">startup</code>: the units and applications at login, what needs a unit and what stopping it costs, and a change’s plan</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_storage</code>, <code dir="auto">prepare_clean</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox storage</code>: the space, what can be cleaned, and a cleanup’s plan</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_performance</code>, <code dir="auto">compare_boots</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox performance</code>: this boot, recorded, with the machine now and the boots recorded; one boot beside another</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_recovery</code>, <code dir="auto">prepare_snapshot_check</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox recovery</code>: the readiness checks, and the snapshot check’s plan</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_restic</code>, <code dir="auto">restic_files</code>, <code dir="auto">restic_history</code>, <code dir="auto">prepare_restic</code>, <code dir="auto">record_baseline</code>, <code dir="auto">set_restic_timer</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox restic</code>: the repository and its snapshots, a folder of one, a file’s history, a check, backup, restore or recovery test’s plan, a baseline recorded, and the timer turned on or off</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_configs</code>, <code dir="auto">validate_config</code>, <code dir="auto">set_config_field</code>, <code dir="auto">prepare_config_save</code>, <code dir="auto">prepare_config_restore</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox config</code>: both configurations with their text, a draft checked, a field changed in a draft, the plan that saves it over the file read (refused when it changed since), and a backup kept beside it put back</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_home_manager</code>, <code dir="auto">prepare_home_manager</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox home-manager</code>: the configuration, generations, repository and links, and a build’s, switch’s, generation’s or pull’s plan</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_repositories</code>, <code dir="auto">read_repository</code>, <code dir="auto">repository_diff</code>, <code dir="auto">prepare_repository_change</code>, <code dir="auto">prepare_task</code>, <code dir="auto">save_workspace</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox repos</code>: the repositories found, one in full, a diff, a change’s plan, a task’s plan, and favorites and tasks kept in <code dir="auto">workspaces.toml</code>; only repositories among those found are taken</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_migration_export</code>, <code dir="auto">export_migration</code>, <code dir="auto">open_migration</code>, <code dir="auto">prepare_migration</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox migrate</code>: what this machine would export, written to a file, a migration file read here, and its install plan; the file is chosen in the file chooser unless a path is given</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">check_entry</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox verify</code> for one entry, as text: <strong>Check it now</strong> in an entry’s details</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">hardware_report</code>, <code dir="auto">open_issue</code></td>
+<td style="text-align: left"><code dir="auto">helix-toolbox report --worked</code> for a run or an entry, and its issue opened by <code dir="auto">xdg-open</code>, outside the AppImage’s own libraries</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">import_profile</code>, <code dir="auto">export_profile</code>, <code dir="auto">delete_profile</code></td>
+<td style="text-align: left">your profiles: one added from a file, written to one, or deleted; the file is chosen in the file chooser unless a path is given</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">doctor</code>, <code dir="auto">prepare_repair</code></td>
+<td style="text-align: left">the health checks, and a repair ready to confirm</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">updates</code>, <code dir="auto">prepare_channels</code>, <code dir="auto">prepare_update</code></td>
+<td style="text-align: left">the update channels, and updating channels or entries</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">prepare_remove</code></td>
+<td style="text-align: left">removing package entries, as the terminal interface’s <code dir="auto">r</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">list_backups</code>, <code dir="auto">prepare_restore</code></td>
+<td style="text-align: left">the backups, and a restore</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">drift_targets</code>, <code dir="auto">drift_check</code>, <code dir="auto">save_baseline</code></td>
+<td style="text-align: left">what to compare with, a comparison, a new baseline</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">reliability</code>, <code dir="auto">trust</code></td>
+<td style="text-align: left">how entries are tested, and one entry’s inspection</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_hardware</code>, <code dir="auto">prepare_firmware</code>, <code dir="auto">prepare_smart</code></td>
+<td style="text-align: left">the hardware, a firmware update, a disk’s health check</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_desktop</code>, <code dir="auto">save_look</code>, <code dir="auto">prepare_look</code></td>
+<td style="text-align: left">the desktop and its looks, saving one, putting one back</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">read_settings</code>, <code dir="auto">save_settings</code></td>
+<td style="text-align: left">the run choices</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">save_watch</code></td>
+<td style="text-align: left">what the scheduled check tells of (updates, health problems, Drift from a baseline), and its timer on or off with it</td>
+</tr>
+<tr>
+<td style="text-align: left"><code dir="auto">setup_start</code>, <code dir="auto">setup_choose</code>, <code dir="auto">setup_done</code></td>
+<td style="text-align: left">the wizard: the machine and the workstations, a workstation’s entries for this machine, remembering it was offered</td>
+</tr>
+</tbody>
+</table>
+<p>Every <code dir="auto">prepare_*</code> command answers like <code dir="auto">prepare</code>, with a plan waiting for
+<code dir="auto">run</code>, so one confirmation dialog serves them all. The frontend only
+draws what the commands return and sends back what the user chose; it
+holds no catalog logic of its own. The Hardware, Services, Storage,
+Performance and Offline bundles screens get their text as display rows
+from the engine’s <code dir="auto">rows</code> module, the same rows the terminal interface
+draws: sizes, temperatures, durations and what wants attention arrive
+worked out, and the screen lays them out. The search ranking in
+<code dir="auto">lib/search.ts</code> stays a port of the engine’s, since the palette ranks its
+own screens and actions on every key typed.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="working-on-it">Working on it</h3><a class="sl-anchor-link" href="#working-on-it"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Working on it”</span></a></div>
+<p>With Node 22 and Rust installed, in <code dir="auto">apps/helix-toolbox-gui</code>:</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">npm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">install</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">npm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">run</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">dev</span><span style="--0:#D6DEEB;--1:#403F53">          </span><span style="--0:#919F9F;--1:#5F636F"># the frontend in a browser, with sample data: nothing on the machine is read or changed</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">npm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">run</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">tauri</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">dev</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#919F9F;--1:#5F636F"># the real window on this machine (needs WebKitGTK 4.1 and its development files)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">npm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">run</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">check</span><span style="--0:#D6DEEB;--1:#403F53">        </span><span style="--0:#919F9F;--1:#5F636F"># the TypeScript and Svelte check</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">npm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">test</span><span style="--0:#D6DEEB;--1:#403F53">             </span><span style="--0:#919F9F;--1:#5F636F"># the tests of src/lib, with Vitest; nothing on the machine is read or changed</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">npm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">run</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">build</span><span style="--0:#D6DEEB;--1:#403F53">        </span><span style="--0:#919F9F;--1:#5F636F"># the frontend into dist/</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="npm installnpm run dev          # the frontend in a browser, with sample data: nothing on the machine is read or changednpm run tauri dev    # the real window on this machine (needs WebKitGTK 4.1 and its development files)npm run check        # the TypeScript and Svelte checknpm test             # the tests of src/lib, with Vitest; nothing on the machine is read or changednpm run build        # the frontend into dist/"><div></div></button></div></figure></div>
+<p>The tests sit beside the modules in <code dir="auto">src/lib</code>, as <code dir="auto">name.test.ts</code>, and
+run in Node. There <code dir="auto">api.ts</code> answers from <code dir="auto">mock.ts</code>, as in a browser, so a
+test drives the window’s state through the same calls the screens make:
+the mock plans, runs (and stops) the sample entries and closes a run as
+the Tauri side does, keeping the Install Plan when nothing ran. Keep the
+mock in step when a command’s answer changes. A test file that needs a
+document (the state, the theme, the keyboard helpers) starts with
+<code dir="auto">// @vitest-environment jsdom</code>; in it the Svelte plugin also compiles
+the runes of <code dir="auto">state.svelte.ts</code> as the window runs them. The search
+tests compare the scores of <code dir="auto">helix_toolbox_core::search::score</code> case by
+case; a change to either ranking changes both, with a case for it.</p>
+<p>In <code dir="auto">src-tauri</code>, <code dir="auto">cargo fmt</code>, <code dir="auto">cargo clippy --all-targets -- -D warnings</code> and
+<code dir="auto">cargo test</code> as in the other crates; <code dir="auto">scripts/verify.sh</code> runs all of these
+when npm and WebKitGTK are installed, and the Checks workflow always.
+<code dir="auto">npx tauri build --bundles deb,rpm,appimage</code> makes the packages, as the
+release does.
+Every icon is drawn from the logo, <code dir="auto">assets/icon.svg</code>: after a change to it,
+run <code dir="auto">scripts/icons.sh</code> from the repository root and commit what it writes.
+The window’s header draws <code dir="auto">icon.svg</code> itself, and the Dashboard draws its
+round copy, <code dir="auto">assets/icon-round.svg</code>; change both together.</p>
+<p>The window takes <code dir="auto">--updates</code>, <code dir="auto">--doctor</code> or <code dir="auto">--drift</code> to open on that
+screen, as a click on a notification starts it, and <code dir="auto">--catalog-dir DIR</code>, like the command line, to read a
+catalog from a directory; with <code dir="auto">tests/fixtures</code> it works against the
+fixture entries (a marker file, a failing command, a greeter that asks for
+a name), so the whole flow can be tried without changing anything. Debug
+builds also take <code dir="auto">--drive FILE</code>: a JavaScript file run in the window once
+it has loaded, which can call the <code dir="auto">trace</code> command to print on standard
+error, and the <code dir="auto">quit</code> command to end the program. That is how the window
+is tested where no pointer reaches it. <code dir="auto">scripts/gui-smoke.sh BINARY</code> runs
+<code dir="auto">tests/drive/smoke.js</code> that way against the fixture catalog, with scratch
+folders for the home and settings: the wizard on the first start, the
+palette, every screen, a run of the marker fixture through the
+confirmation and the terminal, a failed run from the Install Plan keeping
+both its entries queued, a saved profile exported, deleted and
+imported again, the Remove button, a bug report from a stand-in
+command line, a hardware report of the run whose issue goes to a stand-in
+<code dir="auto">xdg-open</code>, and the notifications of updates and health problems turned on and off with a
+stand-in <code dir="auto">systemctl</code>; then it checks the files those left. The Checks workflow runs it under <code dir="auto">xvfb-run</code> on every
+change; by hand, inside a virtual session:</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">cd</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">apps/helix-toolbox-gui</span><span style="--0:#D6DEEB;--1:#403F53"> &amp;&amp; </span><span style="--0:#82AAFF;--1:#3B61B0">npm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">run</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">build</span><span style="--0:#D6DEEB;--1:#403F53"> &amp;&amp; </span><span style="--0:#C5E478;--1:#3B61B0">cd</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">src-tauri</span><span style="--0:#D6DEEB;--1:#403F53"> &amp;&amp; </span><span style="--0:#82AAFF;--1:#3B61B0">cargo</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">build</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--features</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">tauri/custom-protocol</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">kwin_wayland</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--virtual</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--xwayland</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--exit-with-session</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">scripts/gui-smoke.sh apps/helix-toolbox-gui/src-tauri/target/debug/helix-toolbox-gui</span><span style="--0:#D9F5DD;--1:#111111">"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="(cd apps/helix-toolbox-gui &amp;&amp; npm run build &amp;&amp; cd src-tauri &amp;&amp; cargo build --features tauri/custom-protocol)kwin_wayland --virtual --xwayland --exit-with-session \  &quot;scripts/gui-smoke.sh apps/helix-toolbox-gui/src-tauri/target/debug/helix-toolbox-gui&quot;"><div></div></button></div></figure></div>
+</div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"><a href="https://github.com/Commanderx-code/Helix-toolbox/edit/main/docs/GUI.md" class="sl-flex print:hidden astro-qlekgd3o"><svg aria-hidden="true" class="astro-qlekgd3o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/toolbox/guide/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">Previous<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Using Helix Toolbox</span></span></a><a href="/toolbox/catalog/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">Next<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">The catalog and plans</span></span></a></div></footer><div class="helix-footer astro-jo6i4kqk"><a href="https://helixtech.app/" class="logo astro-jo6i4kqk"><img src="/_astro/logo-on-dark.CSnaoQmP_1Ssk9D.webp" alt="Helix Tech" loading="lazy" decoding="async" width="116" height="28" class="light:sl-hidden astro-jo6i4kqk"><img src="/_astro/logo-on-light.YO6SStN0_rGh5y.webp" alt="Helix Tech" loading="lazy" decoding="async" width="116" height="28" class="dark:sl-hidden astro-jo6i4kqk"></a><nav aria-label="Helix Tech" class="astro-jo6i4kqk"><a href="https://helixtech.app/" class="astro-jo6i4kqk">helixtech.app</a><a href="https://helixtech.app/#tools" class="astro-jo6i4kqk">Tools</a><a href="https://github.com/Commanderx-code" class="astro-jo6i4kqk">GitHub</a><a href="https://helixtech.app/privacy/" class="astro-jo6i4kqk">Privacy</a></nav><p class="astro-jo6i4kqk">© 2026 Helix Tech LLC. Helix Tech™ is a trademark of Helix Tech LLC.</p></div></div></div></main></div></div></div></div></body></html>

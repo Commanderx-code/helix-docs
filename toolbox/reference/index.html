@@ -1,0 +1,754 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>How Helix Toolbox works | Helix Tech Docs</title><link rel="canonical" href="https://docs.helixtech.app/toolbox/reference/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.4"/><meta name="generator" content="Starlight v0.42.8"/><meta property="og:title" content="How Helix Toolbox works"/><meta property="og:type" content="article"/><meta property="og:url" content="https://docs.helixtech.app/toolbox/reference/"/><meta property="og:locale" content="en_US"/><meta property="og:description" content="What each part of Helix Toolbox does, in detail."/><meta property="og:site_name" content="Helix Tech Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="What each part of Helix Toolbox does, in detail."/><meta property="og:image" content="https://docs.helixtech.app/og/toolbox.png"/><meta property="og:image:type" content="image/png"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="Helix Toolbox documentation"/><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#11141c"/><meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/><script src="/_scripts/556a395a9e1aa928.js"></script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.COzelJ9Z.css"><link rel="stylesheet" href="/_astro/data.U1EK5lRe.css"><script type="module" src="/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">Skip to content</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-nen7h5rs"><div class="title-wrapper sl-flex astro-nen7h5rs"><a href="/" class="site-title sl-flex astro-6rvad3va"><img class="light:sl-hidden print:hidden astro-6rvad3va" alt="Helix Tech" src="/_astro/logo-on-dark.CSnaoQmP.png" width="1889" height="457"><img class="dark:sl-hidden print:block astro-6rvad3va" alt="Helix Tech" src="/_astro/logo-on-light.YO6SStN0.png" width="1889" height="457"><span class="sr-only astro-6rvad3va" translate="no">Helix Tech Docs</span></a></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-nen7h5rs"><div class="sl-flex social-icons astro-nen7h5rs"><a class="home astro-o2gh7vpa" href="https://helixtech.app/">helixtech.app</a><a href="https://github.com/Commanderx-code" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script src="/_scripts/1a4641467bd2ba1b.js"></script><script type="module" src="/_astro/ThemeSelect.astro_astro_type_script_index_0_lang.COBTTKEJ.js"></script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">Menu</span></button><script type="module" src="/_astro/PageFrame.astro_astro_type_script_index_0_lang.DSDKmmqG.js"></script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Djc9ZKGJ.js"></script><script type="module" src="/_astro/LanguageSelect.astro_astro_type_script_index_0_lang.DZJqHYaV.js"></script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><div class="sidebar-search astro-wv7whodv"><site-search class="astro-wv7whodv astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">Cancel</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script src="/_scripts/7ffcc0504ef8b9c7.js"></script></div><sl-sidebar-state-persist data-hash="1e128kz" class="astro-ipdry5cl"><script aria-hidden="true" src="/_scripts/c17db23800de57e3.js"></script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Helix Toolbox</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/toolbox/walkthrough/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Walkthrough</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Installing Helix Toolbox</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Using Helix Toolbox</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/gui/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The window</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/catalog/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The catalog and plans</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/reference/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">How Helix Toolbox works</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/json/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">JSON output</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/events/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Execution events</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/migration/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Migration</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/stability/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">What stays the same in 1.x</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/security/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Security</span></a></li><li class="astro-rmhv4bp6"><a href="/toolbox/reporting/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Testing and reporting problems</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Helix Boot</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/boot/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Helix Boot: the documentation</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/install/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Installing and updating</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/tools/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">What&#39;s on the stick</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/look/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The boot menu&#39;s look</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/theming/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">HELIXBOOT themes</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/tool-icons/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Boot-menu icons</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/packs/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Packs: the whole stick in one file</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/engine/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">The engine, and how it keeps a stick safe</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/lazarus-pe/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Lazarus PE</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/testing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Testing on real hardware</span></a></li><li class="astro-rmhv4bp6"><a href="/boot/code-signing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Code signing policy</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">webOS Launcher</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/webos-launcher/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">webOS Launcher</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/controls/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Controls</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/setup/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Setup</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/settings/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Settings in config.json</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/automatic-updates/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Automatic updates</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/rooted-tv/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">On a rooted TV</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/developer-mode/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Keeping Developer Mode alive</span></a></li><li class="astro-rmhv4bp6"><a href="/webos-launcher/limits/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">What it can&#39;t do</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Touchdown</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/touchdown/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Touchdown</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/features/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Features</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/quick-start/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Quick start</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/screenshots/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Screenshots</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/controls/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Controls</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/favorite-team/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Favorite team and theme</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/options/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Command-line options</span></a></li><li class="astro-rmhv4bp6"><a href="/touchdown/data/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Data and refresh behavior</span></a></li></ul></details></li></ul><script aria-hidden="true" src="/_scripts/ede095e23b6caf8b.js"></script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a class="home astro-o2gh7vpa" href="https://helixtech.app/">helixtech.app</a><a href="https://github.com/Commanderx-code" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">GitHub</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">Dark</option><option value="light" class="astro-2z5xp7gb">Light</option><option value="auto" selected class="astro-2z5xp7gb">Auto</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script src="/_scripts/1a4641467bd2ba1b.js"></script></div></div><p class="sidebar-note astro-wv7whodv">Something wrong or missing? <a href="https://github.com/Commanderx-code/helix-docs/issues/new" class="astro-wv7whodv">Open an issue</a>.</p></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module" src="/_astro/Page.astro_astro_type_script_index_0_lang.DC4zszI0.js"></script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">On this page<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-menu" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The menu</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#status-and-updates" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Status and updates</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-header-banner" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The header banner</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#profiles" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Profiles</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#drift" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Drift</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-setup-wizard" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The setup wizard</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-desktop" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The desktop</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#offline-bundles" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Offline bundles</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-a-change-will-do" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What a change will do</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#hardware" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Hardware</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#services-and-startup" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Services and startup</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#storage" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Storage</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#performance" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Performance</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#recovery" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Recovery</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#migration" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Migration</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#restic" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Restic</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#repositories" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Repositories</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#configs" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Configs</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#home-manager" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Home Manager</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#reliability-and-trust" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Reliability and trust</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#helix-doctor-backups-and-snapshots" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Helix Doctor, backups and snapshots</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-command-line" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The command line</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Overview</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-menu" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The menu</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#status-and-updates" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Status and updates</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-header-banner" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The header banner</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#profiles" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Profiles</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#drift" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Drift</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-setup-wizard" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The setup wizard</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-desktop" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The desktop</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#offline-bundles" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Offline bundles</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#what-a-change-will-do" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">What a change will do</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#hardware" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Hardware</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#services-and-startup" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Services and startup</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#storage" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Storage</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#performance" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Performance</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#recovery" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Recovery</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#migration" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Migration</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#restic" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Restic</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#repositories" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Repositories</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#configs" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Configs</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#home-manager" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Home Manager</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#reliability-and-trust" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Reliability and trust</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#helix-doctor-backups-and-snapshots" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">Helix Doctor, backups and snapshots</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#the-command-line" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">The command line</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="en" dir="ltr"><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><h1 id="_top" class="astro-bebwqqxs">How Helix Toolbox works</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p>What each part of Helix Toolbox does, in detail. <a href="/toolbox/guide/">GUIDE.md</a> is the
+shorter walk-through for getting started; <a href="/toolbox/catalog/">CATALOG.md</a> covers the
+entries themselves and how a run is planned.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-menu">The menu</h2><a class="sl-anchor-link" href="#the-menu"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The menu”</span></a></div>
+<p>In the interface the sidebar is a menu of screens. <code dir="auto">Tab</code> or <code dir="auto">j</code>/<code dir="auto">k</code> in the
+sidebar move between Dashboard, Applications, Favorites, Install Plan, and the other
+areas, History and Settings; <code dir="auto">Enter</code> or <code dir="auto">l</code> opens the selected screen and
+<code dir="auto">h</code> returns to the sidebar. In an area, <code dir="auto">j</code>/<code dir="auto">k</code> or the arrows move in the
+list, <code dir="auto">Enter</code> opens a group or runs an entry, <code dir="auto">Space</code> adds it to the install
+plan, <code dir="auto">d</code> shows its details, <code dir="auto">p</code> the script or command, <code dir="auto">g</code> explains the
+flags column and <code dir="auto">/</code> searches every area. A row shows the entry’s
+description where it fits, a group what it holds and how many items, and
+a search result the area and group it is listed in; an entry marked <code dir="auto">[&gt;]</code>
+(a play icon with Nerd Font icons) runs on its own and cannot be queued.
+The details say where the entry is, its kind (package, script, command,
+Nix, built in or profile), whether it asks questions as it runs, where an
+installed package came from, what a profile runs in order and what each of
+its flags means. On a profile, <code dir="auto">e</code> puts its entries in the Install Plan one
+by one, so the plan can be changed before it runs. The Install Plan shows
+what is queued with its risk and requirements, each entry with its status,
+flags, area, kind and step; <code dir="auto">K</code> and <code dir="auto">J</code> (or <code dir="auto">Shift</code> with the arrows) move
+the selected one earlier or later, and <code dir="auto">Enter</code> runs it. Each run asks <code dir="auto">[Y]</code>
+first and then runs in a terminal inside the window, with each step beside
+it (waiting, running, done, failed with its exit status, or skipped), how
+many steps have ended, and the run’s warnings and, at the end, its result
+and every check, those done after the next reboot or not checked here marked
+so; <code dir="auto">Ctrl-C</code> stops it and everything it started (if something ignores that,
+the window says so and a second <code dir="auto">Ctrl-C</code> kills it), <code dir="auto">l</code> saves its output, and
+History lists every run.
+<code dir="auto">?</code> shows all keys and <code dir="auto">q</code> quits. The menu needs a terminal; the commands
+below also work without one. <code dir="auto">helix-toolbox tui --screen &lt;name&gt;</code> opens it
+on a screen (<code dir="auto">updates</code>, <code dir="auto">doctor</code>, <code dir="auto">drift</code>, <code dir="auto">plan</code>, <code dir="auto">restic</code> and the others,
+or an area’s id such as <code dir="auto">applications</code>); on the first start the setup
+wizard opens over it.</p>
+<p>As in the window, the sidebar counts pinned Favorites, queued Install Plan
+entries and entries with an update, and the header shows the version. The
+Dashboard counts the package entries installed, those with an update
+waiting, what is queued and what is pinned, above the System Overview, and
+its quick actions include <strong>Set up this machine</strong> (the setup wizard) and
+<strong>Find anything</strong> (the command palette). The footer’s rule says how many
+package entries were checked, or that the check is running; <code dir="auto">Ctrl-R</code>, or
+“check again what is installed” in the command palette, checks again.</p>
+<p><code dir="auto">Ctrl-K</code> opens the command palette from any screen: type part of what you
+want and <code dir="auto">Enter</code> does it. It finds every screen (<code dir="auto">open updates</code>), actions
+(<code dir="auto">check updates online</code>, <code dir="auto">run DNS diagnostics</code>, which opens Helix Doctor
+at that check, <code dir="auto">save this machine as a baseline</code>, <code dir="auto">clear the install plan</code>,
+<code dir="auto">change the theme</code>) and every entry (<code dir="auto">install ghostty</code>), loose spellings
+included. An entry chosen there is planned and confirmed like any other.</p>
+<p>The mouse works too. A click on a sidebar item opens that screen; a click
+on a row selects it, and a click on the row already selected does what
+<code dir="auto">Enter</code> does, so an entry or a plan still opens its confirmation first and
+a word you must type is still typed. A click on a key hint at the bottom
+presses that key, and the wheel scrolls the list, a popup or the output of
+a run. A click outside a popup does nothing. While the interface has the
+mouse, most terminals still select text with <code dir="auto">Shift</code> held down; Settings
+(<strong>Mouse</strong>) or <code dir="auto">Ctrl-K</code> “turn the mouse off” leaves the mouse to the
+terminal, and the choice is remembered.</p>
+<p>Search ranks what it finds: names that match exactly or start with the
+text first, then names containing it, ids, loose spellings (<code dir="auto">rpgrp</code> finds
+Ripgrep) and descriptions. <code dir="auto">Escape</code> clears it and goes back to the row you
+were on. <code dir="auto">i</code> cycles the list between all entries, installed ones (including
+those managed by Nix) and ones with an update, flattening the groups of the
+area. <code dir="auto">*</code> pins the selected entry; <strong>Favorites</strong> lists pinned entries, then
+the ones run recently, from History, and is also a quick action on the
+Dashboard. Pins are kept in <code dir="auto">~/.config/helix-toolbox/favorites.toml</code>. Each area
+remembers its group and row when you move to another.</p>
+<p>The menu follows the Helix Toolbox dashboard design: cards for the main screens
+and quick actions, with Nerd Font icons. <code dir="auto">t</code> or Settings switches between
+four themes: <strong>solid</strong>, the default, paints the design’s dark panels;
+<strong>transparent</strong> draws over your terminal’s own background, so a wallpaper or
+transparency shows through (it was called <strong>default</strong> before, and that name
+still works); <strong>compatible</strong> keeps to sixteen colors; <strong>monochrome</strong> uses no
+color at all, only bold and reverse video. With <code dir="auto">NO_COLOR</code> set, Helix Toolbox
+starts in monochrome without changing the theme it remembers. Settings also turns the icons
+off for terminals without a Nerd Font. Both choices are remembered in
+<code dir="auto">~/.config/helix-toolbox/settings.toml</code>, which the Settings screen names;
+<code dir="auto">--theme</code> and <code dir="auto">--plain</code> override them for one run. A <code dir="auto">settings.toml</code> that
+does not parse is copied to <code dir="auto">settings.toml.unreadable</code> beside it before a
+setting is next saved, since the new file holds only what was saved.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="status-and-updates">Status and updates</h2><a class="sl-anchor-link" href="#status-and-updates"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Status and updates”</span></a></div>
+<p>Package entries show how they stand on this machine, beside their flags:
+<strong>Installed</strong> with where from and the version (<code dir="auto">pacman 15.2.0-1</code>, <code dir="auto">apt</code>,
+<code dir="auto">dnf</code>, <code dir="auto">AUR</code>, <code dir="auto">Flatpak 7.5</code>, <code dir="auto">GitHub release 0.66.2</code>), <strong>Update</strong> when the
+repository metadata already on the machine has a newer version (<code dir="auto">pacman 15.2.0-1 → 15.3.0-1</code>; nothing is downloaded to find out), or the catalog
+pins a newer release than the one installed (<code dir="auto">GitHub release 0.65.0 → 0.66.2</code>), <strong>Managed</strong> when the command comes from Nix (<code dir="auto">Home Manager 1.4.7</code>, <code dir="auto">Nix</code>, <code dir="auto">NixOS</code>), or <strong>Not installed</strong>. When a package is
+installed but a Nix copy of its command comes first on the PATH, the status
+says so (<code dir="auto">; Home Manager's 0.12.5 runs first</code>). The check runs in the
+background when the menu opens, after every run and on <code dir="auto">Ctrl-R</code>; <code dir="auto">d</code>
+repeats it in the details.</p>
+<p><code dir="auto">u</code> updates the selected entry and <code dir="auto">U</code> every entry with an update, after
+the same confirmation as a run: <code dir="auto">flatpak update -y</code> for its installation, <code dir="auto">apt-get install --only-upgrade</code>, <code dir="auto">dnf upgrade</code> or <code dir="auto">zypper update</code> for that package,
+and on Arch <code dir="auto">pacman -Syu</code>, the whole system, since updating one package alone
+is a partial upgrade, which Arch does not support. Afterward each package’s
+version is compared with its version before; one that did not change is not
+verified. Entries managed by Nix say to update them there.</p>
+<p>After every run, each package step is checked with the package manager, and
+each script entry for what its <code dir="auto">[detect]</code> table says it installs and for its
+<code dir="auto">[[verify]]</code> checks (docs/CATALOG.md): the files and folders it leaves,
+words on the kernel command line, the value of a setting and whether it
+names something installed, and systemd units enabled or running. They are
+read as you and change nothing. The result says <code dir="auto">verified</code>, or <code dir="auto">not verified:</code> with what is wrong; what cannot be read here (a file only root
+can read, a container without systemd) is reported as not checked, never as
+passed. Checks that hold only after a reboot are kept beside the history and
+made once the machine has started again: Helix Doctor’s <strong>Checks after the
+reboot</strong> shows them waiting, then what they found. <code dir="auto">c</code> on an entry, <strong>Check
+it now</strong> in the window and <code dir="auto">helix-toolbox verify &lt;entry&gt;…</code> (exit status 1
+when one fails, <code dir="auto">--json</code> too) make an entry’s checks at any time.</p>
+<p><strong>Updates</strong> shows the whole machine, not only catalog entries: for each tool
+that keeps it (pacman or apt, dnf, zypper; the AUR helper; Flatpak’s system
+and user installations; Home Manager with a flake, NixOS, a Nix profile) what
+is waiting, from what that tool already knows. <code dir="auto">r</code> checks online through
+read-only commands (<code dir="auto">checkupdates</code>, which leaves pacman’s database alone,
+<code dir="auto">paru -Qua</code> or <code dir="auto">yay -Qua</code>, <code dir="auto">flatpak remote-ls</code>); nothing else asks the
+network. Nix channels show how old their locked nixpkgs is, since Nix counts
+nothing before it updates. <code dir="auto">Enter</code> lists the packages, <code dir="auto">u</code> updates the
+selected channel and <code dir="auto">U</code> every channel with updates waiting, one after
+another and the AUR after the repositories, through the tools themselves
+(<code dir="auto">sudo pacman -Syu</code>, <code dir="auto">paru -Sua</code>, <code dir="auto">flatpak update</code>, <code dir="auto">nix flake update</code> then
+<code dir="auto">home-manager switch</code>), after the usual confirmation. The Home Manager update
+changes the flake’s <code dir="auto">flake.lock</code>, in your dotfiles checkout when the
+configuration is a link to one. Below the channels, the package entries with
+an update are listed: <code dir="auto">Enter</code> (or <code dir="auto">u</code>) on one updates it as <code dir="auto">u</code> in its area
+does, and the last row updates every one of them.</p>
+<p>The <strong>Helix Toolbox</strong> row is Helix Toolbox itself, updated the way it was
+installed, which it tells from where it runs. <code dir="auto">r</code> asks GitHub for the latest
+release. A package in <code dir="auto">/usr/bin</code> is updated by downloading the new release’s
+package for this distribution into <code dir="auto">~/.cache/helix-toolbox/release</code>, checking it
+against the release’s <code dir="auto">SHA256SUMS</code> (the hidden <code dir="auto">helix-toolbox fetch-release</code>
+command, which takes only a release version and one of the release’s own file
+names), then installing it with <code dir="auto">pacman -U</code>, <code dir="auto">apt-get install</code>, <code dir="auto">dnf install</code>
+or <code dir="auto">zypper install</code>; the window’s package (<code dir="auto">helix-toolbox-gui</code>) is fetched and
+installed with it when the package tool says it is installed. On Arch with
+the helix-toolbox repository in <code dir="auto">pacman.conf</code> (INSTALL.md), the row runs
+<code dir="auto">pacman -Syu --needed helix-toolbox</code> (and <code dir="auto">helix-toolbox-gui</code>) instead, which
+updates the system with them. A copy from <code dir="auto">cargo install</code> runs <code dir="auto">cargo install --locked helix-toolbox</code> again. A build in a checkout fast-forwards it from
+GitHub and builds it, and leaves a checkout with local changes alone. A copy
+anywhere else that the user owns (<code dir="auto">~/.local/bin</code>, say) is replaced by the
+release’s program, fetched and checked the same way, with <code dir="auto">install -m 0755</code>;
+one the user does not own is left to whoever put it there. The window run
+as an AppImage (the <code dir="auto">APPIMAGE</code> variable names the file) has the release’s
+AppImage fetched, checked and put in its place, whatever updates the command
+line. The launcher and <code dir="auto">start.sh</code> fetch the latest release every time they
+start, so there is nothing to run for them.</p>
+<p><strong>Update notifications</strong> (Settings in the menu and the window, or
+<code dir="auto">helix-toolbox notifications on</code>) write two units of the user’s own,
+<code dir="auto">helix-toolbox-updates.timer</code> and <code dir="auto">helix-toolbox-updates.service</code>, into
+<code dir="auto">$XDG_CONFIG_HOME/systemd/user</code>, enable the timer with the same link
+<code dir="auto">systemctl --user enable</code> makes, and start it; no password is asked. The
+timer starts the service 10 minutes after the user’s systemd starts (at
+login) and every 6 hours after that, each time up to 10 minutes later at
+random. The service runs <code dir="auto">helix-toolbox notifications check</code>: the Updates
+overview, online, as <code dir="auto">helix-toolbox updates --online</code> reads it. When
+something waits that the last notification did not tell of (the package
+names and new versions it told of are kept in
+<code dir="auto">$XDG_STATE_HOME/helix-toolbox/notified.txt</code>), it shows a notification with
+<code dir="auto">notify-send</code>, or with <code dir="auto">gdbus</code> where libnotify is missing. With libnotify
+0.7.10 or later and the window installed, the notification has a <strong>Show
+updates</strong> button and waits up to 30 minutes for it, which opens the window
+with <code dir="auto">--updates</code>, on the Updates screen; the service names the window it
+was turned on from (an AppImage by its file), else <code dir="auto">helix-toolbox-gui</code> on
+the PATH. The check never updates anything. <code dir="auto">helix-toolbox notifications off</code> stops the timer and removes the units and <code dir="auto">notified.txt</code>. A machine
+without systemd gets no files and says so.</p>
+<p>The same timer can watch more, each read-only and told only when something
+is new: <strong>Tell me of new health problems</strong> (<code dir="auto">helix-toolbox notifications health on</code>) runs Helix Doctor’s health checks and tells of a check that has
+become a problem since it last told (a failed service, a disk filling up,
+checks after a reboot that did not hold); the network and DNS checks, which
+come and go, are left out. <strong>Tell me when it drifts from a baseline</strong>
+(<code dir="auto">helix-toolbox notifications drift &lt;baseline&gt;</code>, or <code dir="auto">off</code>) compares the
+machine with a saved Drift baseline and tells of each new difference once.
+Their buttons open the window on Helix Doctor (<code dir="auto">--doctor</code>) or Drift
+(<code dir="auto">--drift</code>). Nothing is repaired or put back by itself. The choices are kept
+under <code dir="auto">[watch]</code> in <code dir="auto">settings.toml</code>, what was told in <code dir="auto">health-told.json</code> and
+<code dir="auto">drift-told.json</code> beside <code dir="auto">notified.txt</code>; the timer is on while any choice
+is, and <code dir="auto">helix-toolbox notifications</code> says which.</p>
+<p>Script entries such as Steam, VS Code or Firefox show the same status when
+they say what they install (most application scripts do), and <code dir="auto">u</code> updates
+that package; a script entry without it shows only its flags and is updated
+by running it again. When a command is on the PATH but in none of an entry’s
+packages, the package that owns the file is looked up (<code dir="auto">pacman -Qo</code>, <code dir="auto">dpkg -S</code>, <code dir="auto">rpm -qf</code>), so <code dir="auto">/usr/bin/github-desktop</code> shows as <code dir="auto">pacman: github-desktop 3.4.14-2</code>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-header-banner">The header banner</h2><a class="sl-anchor-link" href="#the-header-banner"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The header banner”</span></a></div>
+<p>In terminals that show pictures through Kitty’s graphics (Ghostty, Kitty) or
+Sixel (foot, WezTerm, xterm with Sixel on), the header is the Helix Toolbox
+banner. Elsewhere, including Konsole, tmux and the console, with icons off or
+in the compatible theme, it is the text header. Helix Toolbox asks the terminal
+once at start and waits at most 0.4 seconds for the answer.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="profiles">Profiles</h2><a class="sl-anchor-link" href="#profiles"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Profiles”</span></a></div>
+<p><strong>Profiles</strong> of your own: queue what a workstation needs (applications,
+the Myfish shell setup, dotfiles configurations, system tweaks; all are
+entries) and press <code dir="auto">s</code> on the Install Plan to save it under a name. It is a
+TOML file in <code dir="auto">~/.config/helix-toolbox/profiles/</code> and appears under Profiles,
+<strong>Your profiles</strong>, where <code dir="auto">Enter</code> runs it and <code dir="auto">Space</code> queues it, like the
+built-in ones; its entries run in order, after what they depend on.
+In the menu’s Profiles area, <code dir="auto">x</code> on one of your profiles exports it to a
+file, <code dir="auto">Delete</code> deletes it (after you type yes) and <code dir="auto">o</code> imports a profile
+file; the window has the same as buttons. On the command line:
+<code dir="auto">helix-toolbox profile list</code>, <code dir="auto">export &lt;name&gt; [file]</code>, <code dir="auto">import &lt;file&gt;</code> (which
+refuses a profile naming entries this catalog does not have) and <code dir="auto">delete &lt;name&gt;</code>; <code dir="auto">helix-toolbox run profile-&lt;name&gt;</code> runs one.</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.w36nc.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="toml"><code><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">name</span><span style="--0:#D6DEEB;--1:#403F53"> = </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Dev Box</span><span style="--0:#D9F5DD;--1:#111111">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">description</span><span style="--0:#D6DEEB;--1:#403F53"> = </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Terminal tools and editor configuration</span><span style="--0:#D9F5DD;--1:#111111">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">entries</span><span style="--0:#D6DEEB;--1:#403F53"> = [</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">git</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">ripgrep</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">myfish-fish</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">dotfiles-nvim</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">ghostty</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="name = &quot;Dev Box&quot;description = &quot;Terminal tools and editor configuration&quot;entries = [&quot;git&quot;, &quot;ripgrep&quot;, &quot;myfish-fish&quot;, &quot;dotfiles-nvim&quot;, &quot;ghostty&quot;]"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="drift">Drift</h2><a class="sl-anchor-link" href="#drift"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Drift”</span></a></div>
+<p><strong>Drift</strong> shows how this machine differs from a saved <strong>baseline</strong> or from
+a profile, without changing anything. A baseline records what is installed
+(each package entry’s source and version), the configuration files and
+folders catalog entries write (by SHA-256 checksum, never their contents),
+the login shell, display manager, Arch repositories, Flatpak remotes and
+desktop, and the entries without a package Helix Toolbox has run successfully.
+<code dir="auto">s</code> on the Drift screen, or <code dir="auto">helix-toolbox drift save &lt;name&gt;</code>, saves one in
+<code dir="auto">~/.config/helix-toolbox/baselines/</code>; <code dir="auto">--path</code> adds files of your own.</p>
+<p>Comparing lists, most important first: <strong>Missing</strong> applications and
+configuration files, entries that ran there and are <strong>Not run</strong> here,
+<strong>Replaced</strong> paths (a file that became a Home Manager link), <strong>Changed</strong>
+files and settings, then what was <strong>Added</strong> since and other <strong>Versions</strong>.
+<code dir="auto">b</code> compares with another baseline or with a profile instead, which checks
+each of its entries: installed, its files present, or run here. An entry
+with no recorded run here still counts as set up when what it sets is in
+place: the files it writes are all there, or its installer’s own renderer
+(<code dir="auto">configure.py</code>, which only prints) finds the boot or login-screen settings
+it would write already in the file, as after a run from before Helix Toolbox
+1.1 recorded runs, or a change made by hand. A program Helix Toolbox
+installed from a GitHub release is <strong>Missing</strong> when it is gone and
+<strong>Changed</strong> when it is another file than the one installed, with whichever
+baseline or profile. Each difference shows what it
+was and what it is now. <code dir="auto">Enter</code>
+explains a difference; <code dir="auto">Space</code> adds the entry that puts it back to the
+Install Plan and <code dir="auto">a</code> adds all of them, to be reviewed and confirmed there;
+<code dir="auto">R</code> reviews running all of them now instead. What the baseline or profile
+names that this catalog lacks is listed as not compared, and the entries
+this distribution cannot install as not on this machine.</p>
+<p>To set up a new machine like an old one: <code dir="auto">helix-toolbox drift save "Old laptop"</code> and <code dir="auto">helix-toolbox drift export "Old laptop"</code> there, then <code dir="auto">helix-toolbox drift check old-laptop.toml</code> on the new one; it ends with the <code dir="auto">helix-toolbox run</code> that would restore what is missing (planned and confirmed first), and
+names what this distribution cannot install. <code dir="auto">drift list</code>, <code dir="auto">import</code> and
+<code dir="auto">delete</code> manage the saved ones; <code dir="auto">--exit-code</code> makes <code dir="auto">check</code> exit with 1
+when anything differs.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-setup-wizard">The setup wizard</h2><a class="sl-anchor-link" href="#the-setup-wizard"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The setup wizard”</span></a></div>
+<p>The first time Helix Toolbox starts, it offers the setup wizard (Settings,
+<strong>Setup wizard</strong>, and <code dir="auto">Ctrl-K</code> “set up this machine” open it again). It shows
+what it found: the distribution and package manager, the other package
+tools (paru, yay, Flatpak, Nix, Home Manager, Snap), the desktop and session,
+the graphics and whether this is a laptop. Then it offers workstations from
+<code dir="auto">catalog/setup.toml</code>: <strong>Developer</strong>, <strong>Gaming</strong> (with the NVIDIA driver entry
+for the distribution where there is an NVIDIA card), <strong>Privacy</strong> (a firewall
+baseline and AppArmor, or SELinux on Fedora), <strong>Minimal</strong> and <strong>Custom</strong>
+(every suggestion, none ticked). Its entries are listed with how they stand,
+ticked where they can run here and are not installed; <code dir="auto">Enter</code> puts the
+ticked ones in the Install Plan, where they are planned, previewed and
+confirmed like anything else. The wizard runs nothing itself.
+<code dir="auto">helix-toolbox setup</code> lists the workstations; <code dir="auto">helix-toolbox setup gaming</code> prints
+what it would add and its plan, and the <code dir="auto">helix-toolbox run</code> that would run it.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-desktop">The desktop</h2><a class="sl-anchor-link" href="#the-desktop"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The desktop”</span></a></div>
+<p><strong>Desktop</strong> shows the desktop environment and its version (KDE Plasma,
+GNOME, Xfce, Cinnamon, MATE, Hyprland, Sway), the session, the login screen
+with its configuration files and SDDM theme, and the appearance settings
+read with the desktop’s own tools (<code dir="auto">kreadconfig6</code>, <code dir="auto">gsettings</code>,
+<code dir="auto">xfconf-query</code>): color scheme, style, icons, cursor, global theme, font.
+It warns when something else sets them: Home Manager’s Plasma or dconf
+steps, or Stylix, which may set them again at the next switch, and refuses
+to change them where Home Manager links the settings file itself. <code dir="auto">s</code>
+saves the look in <code dir="auto">~/.config/helix-toolbox/looks/</code>; <code dir="auto">Enter</code> on a saved look
+puts back what differs with the desktop’s own commands
+(<code dir="auto">plasma-apply-colorscheme</code>, <code dir="auto">gsettings set</code>, …), after confirmation. The
+entries for this desktop (its login screen theme, terminal configuration,
+boot splash) are listed below with what is worth knowing about each here,
+to run or queue. <code dir="auto">helix-toolbox desktop</code>,
+<code dir="auto">desktop save &lt;name&gt;</code>, <code dir="auto">desktop apply &lt;name&gt;</code>, <code dir="auto">list</code> and <code dir="auto">delete</code>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="offline-bundles">Offline bundles</h2><a class="sl-anchor-link" href="#offline-bundles"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Offline bundles”</span></a></div>
+<p>For a machine without reliable internet, <code dir="auto">helix-toolbox bundle create &lt;folder&gt; &lt;entries…&gt;</code> downloads, on a machine of the same distribution and
+architecture, the packages those entries need into a new folder, with a copy
+of Helix Toolbox (the catalog and installers are inside it), a manifest
+(<code dir="auto">bundle.toml</code>) and <code dir="auto">SHA256SUMS</code>. By default it takes the dependencies this
+machine lacks, which suits a machine set up like it; <code dir="auto">--complete</code> takes every
+dependency. pacman’s packages come with their signatures, which <code dir="auto">pacman -U</code>
+checks against its keyring when it installs them; apt’s are checked against
+the checksums in the repository’s signed index as they are downloaded; dnf’s
+are signed, and their signatures are checked against the installing
+machine’s rpm keyring before they install; so are zypper’s,
+which zypper downloads as you, without root, into a scratch root that
+shares this machine’s repositories (an empty package database for
+<code dir="auto">--complete</code>, this machine’s own otherwise), checking each against the
+repository’s signed metadata. Entries that need the network (AUR builds,
+scripts, Nix, Flatpaks not installed here) are listed as such and left
+out.</p>
+<p>An entry with no package for this distribution whose Flatpak is installed
+here goes in as that Flatpak: <code dir="auto">flatpak create-usb</code> copies it, with the
+runtimes and extensions it needs, from this machine’s installation into the
+bundle’s <code dir="auto">flatpak</code> folder, and the bundle keeps its remote’s signing key.
+<code dir="auto">create-usb</code> needs the remote to have a collection ID; Flathub, added from
+its <code dir="auto">.flatpakrepo</code> file, has none until it is given its own:
+<code dir="auto">sudo flatpak remote-modify --collection-id=org.flathub.Stable flathub</code>.
+<code dir="auto">bundle create</code> says so rather than changing your remotes.</p>
+<p>On the other machine, <code dir="auto">./helix-toolbox bundle verify .</code> checks that the bundle
+was made for this distribution and architecture and that every file matches
+its checksum, and that its <code dir="auto">packages</code> folder holds only that family’s
+package files (<code dir="auto">.pkg.tar.*</code> and their <code dir="auto">.sig</code> for Arch, <code dir="auto">.deb</code> for Debian,
+<code dir="auto">.rpm</code> for Fedora and openSUSE), since everything there goes to the package
+manager. <code dir="auto">./helix-toolbox bundle install .</code>, after confirmation, copies the
+packages into a new private folder, checks the copies against the checksums
+it verified (written into the plan, not read from the bundle again), checks
+each signature (<code dir="auto">pacman-key --verify</code>; for an RPM, <code dir="auto">rpm -Kv</code> must show a
+signature by a key in this machine’s rpm keyring, and nothing failed, both
+when the plan is made and on the copy, and dnf checks it too), and installs
+them from the files (dnf and zypper without their repositories; zypper asks its own
+question only in a terminal, as it reads answers from nowhere else). Debian packages have no
+signature of their own: each must be in this machine’s signed repository
+index with the same checksum. An RPM without such a signature, or a Debian
+package the index does not know, is refused unless <code dir="auto">--trust-bundle</code> takes
+the bundle’s word, for a bundle you made yourself.
+A bundle installs as a whole, since its entries share their dependencies.
+pacman and apt fetch only a dependency the bundle lacks, and only when the
+network is there; a <code dir="auto">--complete</code> bundle lacks none.</p>
+<p>Flatpaks install from the bundle’s copy (<code dir="auto">flatpak install --sideload-repo</code>),
+and flatpak checks each commit’s signature against the remote’s key on this
+machine, as it would from the remote itself. <code dir="auto">verify</code> checks that the copy
+holds each application at the commit the manifest records. A remote without
+a collection ID is given the bundle’s when it is the one published for the
+remote’s address (Flathub’s); any other, and a remote this machine lacks,
+which is added with the bundle’s copy of its key, only with
+<code dir="auto">--trust-bundle</code>, since nothing here vouches for them.</p>
+<p><strong>Offline bundles</strong> in the menu and the window does the same from the
+Install Plan: it says what a bundle of the queued entries would download,
+makes one in a folder you name (with every dependency or only what this
+machine lacks), and checks a bundle’s folder or installs from it, with the
+bundle’s word taken only when you switch that on.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-a-change-will-do">What a change will do</h2><a class="sl-anchor-link" href="#what-a-change-will-do"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “What a change will do”</span></a></div>
+<p>Before a plan runs, <code dir="auto">e</code> (on the Install Plan, in the confirmation, or on a
+backup in Backups) and <code dir="auto">--effects</code> on <code dir="auto">plan</code> and the <code dir="auto">--dry-run</code> commands show
+what it is expected to change on this machine, step by step, each change
+marked by how it is known:</p>
+<ul>
+<li><strong>✓ known</strong>: worked out here. A package step asks the package manager
+without root (<code dir="auto">pacman -Sp</code>, <code dir="auto">apt-get -s</code>) which other packages come with it
+or go; a configuration file is rendered by the installer’s own code
+(<code dir="auto">configure.py</code>, which only prints) from the file as it is now and shown
+side by side with it; a restore compares the file with the backup.</li>
+<li><strong>~ expected</strong>: what the entry declares in its <code dir="auto">[effects]</code> table (files,
+packages, services, when it takes effect) or its script plainly runs.</li>
+<li><strong>? not known in advance</strong>: what a script decides as it runs, the answers
+it asks you for, a boot menu regenerated from the installed kernels, or the
+dependencies dnf and zypper list only with root.</li>
+</ul>
+<p><code dir="auto">Enter</code> on a file shows it now and afterward, side by side; on any other
+change, the whole line. The boot loader, boot splash, login screen and
+AppArmor entries declare their effects; other scripts are previewed by the
+paths they write and the services their script names, and say plainly that
+the rest cannot be known before they run.</p>
+<p>The dotfiles entries (Neovim, Fastfetch, Starship, Konsole and Ghostty) are
+compared file by file once their pinned source, the dotfiles commit the
+installers read, is on this machine: each file is new, changed (side by
+side), the same, or, in a folder the installer replaces whole, left only in
+the backup it keeps. The installer’s own <code dir="auto">configure.py</code> lists them without
+writing anything, and refuses what another tool manages as it would when it
+runs. Until then the preview names the commit; <code dir="auto">d</code> on the changes, or
+<code dir="auto">helix-toolbox --effects plan --fetch-sources ID</code>, downloads it into
+<code dir="auto">~/.local/share/helixforge/sources</code>, where the installers look first, and
+changes nothing else.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="hardware">Hardware</h2><a class="sl-anchor-link" href="#hardware"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Hardware”</span></a></div>
+<p><strong>Hardware</strong> reads the machine without root: fwupd’s devices and the
+firmware updates in the metadata it already has; each disk’s kind, size,
+model, firmware and temperature; every temperature sensor, with those near
+their limit picked out; each battery’s charge, health (what it holds against
+its design capacity) and cycle count; PCI devices with their drivers, and USB
+devices. A firmware update (<code dir="auto">f</code>) asks you to type FIRMWARE, then shows its
+plan with its own confirmation, because an interrupted firmware update can
+leave a device unusable; a SMART health check (<code dir="auto">s</code>) reads the disk’s health
+record and needs your password. <code dir="auto">helix-toolbox hardware</code>, <code dir="auto">--smart &lt;disk&gt;</code> and
+<code dir="auto">--firmware &lt;device&gt;</code> do the same from the command line.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="services-and-startup">Services and startup</h2><a class="sl-anchor-link" href="#services-and-startup"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Services and startup”</span></a></div>
+<p><strong>Services</strong> lists systemd’s units of the machine and of your own session:
+every installed service, timer and socket with whether it is enabled
+(starts at boot or login) and whether it runs now, and those running or
+failed without a unit file of their own (the per-application units desktops
+start are left out). <code dir="auto">i</code> shows the machine’s services, timers and sockets,
+your session’s, what starts at login, or what failed; <code dir="auto">f</code> narrows them to a
+name or description. <code dir="auto">Enter</code> shows a unit’s state, what needs it (<code dir="auto">systemctl list-dependencies --reverse</code>) and, for a unit the machine or the session
+needs, what stopping or disabling it costs: the login screen (your session
+ends, or the next boot stops at a text console), networking and name
+lookups, the firewall, SSH while you are connected through it, D-Bus,
+polkit and systemd’s own units, and in your session sound and the desktop
+portals. <code dir="auto">s</code> starts or stops it, <code dir="auto">e</code> enables or disables it (not static,
+masked or generated units, which something else starts), <code dir="auto">R</code> restarts it;
+each is a plan with that cost as a warning first, high risk for those units,
+and the machine’s own ask for your password. Masking is not offered.</p>
+<p><strong>At login</strong> lists the XDG autostart applications (<code dir="auto">/etc/xdg/autostart</code> and
+<code dir="auto">~/.config/autostart</code>), whether each starts and whether it applies to this
+desktop. <code dir="auto">d</code> shows what it runs, its comment, whether it is the system’s
+or your own and whether your file overrides the system’s. <code dir="auto">Enter</code> turns one
+off for you only, with a file of yours in
+<code dir="auto">~/.config/autostart</code> that says <code dir="auto">Hidden=true</code> (the system’s stays as it
+is), or on again by taking that out. <code dir="auto">helix-toolbox services</code> (<code dir="auto">list [filter] [--user] [--failed]</code>, <code dir="auto">show &lt;unit&gt;</code>, <code dir="auto">start</code>, <code dir="auto">stop</code>, <code dir="auto">restart</code>,
+<code dir="auto">enable</code>, <code dir="auto">disable</code> with <code dir="auto">--user</code>, <code dir="auto">--dry-run</code> and <code dir="auto">--yes</code>) and
+<code dir="auto">helix-toolbox startup</code> (<code dir="auto">list</code>, <code dir="auto">on &lt;file&gt;</code>, <code dir="auto">off &lt;file&gt;</code>) do the same.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="storage">Storage</h2><a class="sl-anchor-link" href="#storage"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Storage”</span></a></div>
+<p><strong>Storage</strong> shows the space on <code dir="auto">/</code> (and the home folder’s file system when
+it is apart), then what can be cleaned, each with what it takes and what
+cleaning it frees: the package cache (pacman keeps the two newest versions
+of each installed package through <code dir="auto">paccache</code>, whose own dry run says what
+it frees; apt, dnf and zypper clean theirs), unused packages (pacman’s
+orphans, apt’s and dnf’s autoremove, zypper’s unneeded, by name, never a
+kernel), unused Flatpak runtimes (<code dir="auto">flatpak uninstall --unused</code>), system logs
+older than four weeks (<code dir="auto">journalctl --vacuum-time=4weeks</code>), the trash,
+thumbnails and, on Arch, paru’s and yay’s build folders. <code dir="auto">Enter</code> shows one’s
+plan, which asks first. The kernels the machine can boot, snapshots and
+Helix Toolbox’s configuration backups are listed and never offered: what
+could undo a mistake stays. <code dir="auto">helix-toolbox storage</code> and <code dir="auto">storage clean &lt;item&gt;</code> (<code dir="auto">--dry-run</code>, <code dir="auto">--yes</code>) do the same.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="performance">Performance</h2><a class="sl-anchor-link" href="#performance"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Performance”</span></a></div>
+<p><strong>Performance</strong> reads systemd’s record of this boot (<code dir="auto">systemctl show</code> of
+the manager’s timestamps, as <code dir="auto">systemd-analyze time</code> counts them): the
+firmware, the boot loader, the kernel, the initial RAM disk and the
+services, then what the login screen waited for (<code dir="auto">systemd-analyze critical-chain</code>) and the slowest services since the boot (<code dir="auto">systemd-analyze blame</code>). Below it, the machine now: the load against its processors,
+memory and swap (zram or a disk), the kernel’s pressure figures for the
+processor, memory and the disk over the last minute, the frequency
+governor and power profile, and the programs holding the most memory.</p>
+<p>Each boot is recorded once, the first time Helix Toolbox reads it or the
+notifications’ timer runs, in <code dir="auto">boots.json</code> beside the history (the last
+50). This boot is set beside the one before it; <code dir="auto">b</code> (or the window’s
+choice) sets it beside an earlier one. The comparison lists each part and
+each unit that moved by half a second or more, a kernel that changed, and
+the Helix Toolbox runs between the two boots. Hints say what is worth
+knowing: the firmware or the boot menu taking long, a service the login
+screen waited two seconds or more for (for <code dir="auto">NetworkManager-wait-online</code> and
+<code dir="auto">systemd-networkd-wait-online</code>, <code dir="auto">Enter</code> plans disabling it, which asks
+first), memory nearly full, swapping to disk without zram, and programs
+waiting. It only reads. <code dir="auto">helix-toolbox performance</code> (<code dir="auto">boots</code>, <code dir="auto">compare &lt;before&gt; [after]</code>, a boot by its number in <code dir="auto">boots</code> or the start of its id)
+does the same.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="recovery">Recovery</h2><a class="sl-anchor-link" href="#recovery"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Recovery”</span></a></div>
+<p><strong>Recovery</strong> checks what would bring the machine back, reading only:</p>
+<ul>
+<li><strong>System snapshots</strong>: Snapper (with a root configuration) or Timeshift,
+and Snapper’s count and newest where this user may list them; a notice
+when the newest is over a month old, or when nothing takes snapshots,
+with the entry that sets Snapper or Timeshift up.</li>
+<li><strong>Starting from a snapshot</strong>, on Btrfs: whether the boot menu lists
+snapshots (grub-btrfs, limine-snapper-sync, openSUSE’s GRUB entries), so a
+system that no longer starts can start from one.</li>
+<li><strong>A second kernel</strong>: the kernels in <code dir="auto">/boot</code> with their boot images, and on
+Arch the advice to keep <code dir="auto">linux-lts</code> beside the kernel.</li>
+<li><strong>Configuration backups</strong>: how many Helix Toolbox’s entries left, and
+the newest.</li>
+<li><strong>Your own files</strong>: the restic repository Restic backs up to, with its
+newest snapshot once Restic has read them (listing them here could ask
+for its password), else a backup program for the home folder (Borg,
+restic, Kopia, Déjà Dup, Pika Backup, Vorta, Back In Time and others),
+since system snapshots leave <code dir="auto">/home</code> out and share the disk.</li>
+<li><strong>A record of this machine</strong>: the newest Drift baseline, a notice when
+there is none or it is over 90 days old.</li>
+</ul>
+<p><code dir="auto">c</code> runs the snapshot check: as root, it lists the snapshots and, for
+Snapper, checks the newest is a Btrfs subvolume holding <code dir="auto">/etc/os-release</code>,
+<code dir="auto">/usr/bin</code> and <code dir="auto">/usr/lib/modules</code>; for Timeshift, <code dir="auto">timeshift --list</code>. It
+rolls nothing back and takes or removes nothing, and asks first. <code dir="auto">f</code> runs
+the entry a check names. <code dir="auto">helix-toolbox recovery</code> (<code dir="auto">--check-snapshots</code>
+with <code dir="auto">--dry-run</code> and <code dir="auto">--yes</code>, confirmed by typing CHECK) does the same.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="migration">Migration</h2><a class="sl-anchor-link" href="#migration"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Migration”</span></a></div>
+<p><strong>Migration</strong> moves what this machine has to another machine or
+distribution. <code dir="auto">e</code> exports it to a file (<code dir="auto">helix-toolbox-migration-&lt;date&gt;.toml</code>
+in your home folder unless you name another), reading only:</p>
+<ul>
+<li>the catalog entries one of whose own packages is installed: the
+family’s package or, on Arch, its AUR package;</li>
+<li>the Flatpak applications no entry covers, and those of an entry installed
+only as its Flatpak, so the other machine gets the same;</li>
+<li>the packages you installed yourself that no entry covers, as the package
+manager records them (<code dir="auto">pacman -Qqe</code>, <code dir="auto">apt-mark showmanual</code>, <code dir="auto">dnf repoquery --userinstalled</code>, zypper’s packages less those it installed as
+dependencies, <code dir="auto">/etc/apk/world</code>, <code dir="auto">xbps-query -m</code>). Where they cannot be
+told apart (on Solus, or when the package manager does not answer), the
+screen says so and only the entries and Flatpaks go in the file.</li>
+</ul>
+<p><code dir="auto">o</code> opens a migration file and says what each thing in it means here,
+under four headings. <strong>To install</strong>: an entry through this distribution’s
+own package (or the AUR, or its Flatpak), a Flatpak from Flathub (after the
+Flatpak entry, when Flatpak is missing), and, when both machines are of the
+same family, a package the repositories here have by its name. <strong>Here
+already</strong>: what is installed, an entry’s Flatpak included. <strong>Cannot be
+installed here</strong>: an entry this catalog lacks or that has no package for
+this distribution, and Flatpaks where Flatpak is missing and no entry
+installs it. <strong>Left to you</strong>: the packages of another family, with
+whether the repositories here have one of the same name (it may not be
+the same software), and packages of this family the repositories do not
+have, such as ones from the AUR. A package another catalog had no entry
+for becomes the entry this one has for it. The repositories are read from
+the metadata already on the machine, with no network.</p>
+<p><code dir="auto">a</code> (or <code dir="auto">Enter</code> on a row to install) reviews the plan of the first list,
+which continues past a failed install; <code dir="auto">d</code> shows a row’s details, <code dir="auto">r</code> reads
+it again. <code dir="auto">helix-toolbox migrate export [file]</code>, <code dir="auto">migrate show &lt;file&gt;</code> and
+<code dir="auto">migrate apply &lt;file&gt;</code> (<code dir="auto">--dry-run</code>, <code dir="auto">--yes</code>, confirmed by typing MIGRATE)
+do the same.</p>
+<p>Flatpak asks again before it installs, removes or updates anything, and
+takes an answer only from a terminal, so the window and <code dir="auto">--yes</code> without one
+could not install a Flatpak. A Flatpak step in a plan therefore carries
+<code dir="auto">-y</code>: the plan you confirmed is the answer, and the <code dir="auto">-y</code> is in the command
+you review.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="restic">Restic</h2><a class="sl-anchor-link" href="#restic"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Restic”</span></a></div>
+<p><strong>Restic</strong> works with a restic repository of your own files. The repository
+comes from the <code dir="auto">[restic]</code> table of <code dir="auto">settings.toml</code>:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="toml"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">[restic]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">repository</span><span style="--0:#D6DEEB;--1:#403F53"> = </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">/run/media/me/Backup/restic</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#919F9F;--1:#5F636F"># or sftp:, rest:, s3: and the others</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">password_file</span><span style="--0:#D6DEEB;--1:#403F53"> = </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">~/.config/restic/password</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#919F9F;--1:#5F636F"># or password_command = "…"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">paths</span><span style="--0:#D6DEEB;--1:#403F53"> = [</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">~/Documents</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">~/Pictures</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]         </span><span style="--0:#919F9F;--1:#5F636F"># what a backup takes; the home folder when left out</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C5E478;--1:#3B61B0">excludes</span><span style="--0:#D6DEEB;--1:#403F53"> = [</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">~/.cache</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]                       </span><span style="--0:#919F9F;--1:#5F636F"># restic --exclude patterns; ~/.cache and the trash when left out</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="[restic]repository = &quot;/run/media/me/Backup/restic&quot;   # or sftp:, rest:, s3: and the otherspassword_file = &quot;~/.config/restic/password&quot;   # or password_command = &quot;…&quot;paths = [&quot;~/Documents&quot;, &quot;~/Pictures&quot;]         # what a backup takes; the home folder when left outexcludes = [&quot;~/.cache&quot;]                       # restic --exclude patterns; ~/.cache and the trash when left out"><div></div></button></div></figure></div>
+<p>Without it, restic’s own <code dir="auto">RESTIC_REPOSITORY</code> and <code dir="auto">RESTIC_PASSWORD_FILE</code>,
+<code dir="auto">RESTIC_PASSWORD_COMMAND</code> or <code dir="auto">RESTIC_PASSWORD</code> are used, or a KWallet entry
+that <code dir="auto">RESTIC_WALLET</code>, <code dir="auto">RESTIC_WALLET_ENTRY</code> and <code dir="auto">RESTIC_WALLET_FOLDER</code> name;
+then the settings Command Center left, read only. Helix Toolbox never
+keeps a password, and refuses a repository address with one in it.</p>
+<p>The screen lists the snapshots (the latest 30 of each machine and folder).
+<code dir="auto">Enter</code> browses one, a folder at a time. <code dir="auto">s</code> looks for a name or path, with
+<code dir="auto">*</code> wildcards, in every snapshot: each version of each file it finds,
+whether it changed from the version before (its size or time), and how
+many newer snapshots of the same folder no longer have it; <code dir="auto">i</code> looks
+again ignoring upper and lower case. <code dir="auto">R</code> on a
+snapshot, a file or a version restores it into a new folder of your home
+folder, which must not be there yet: restic restores with <code dir="auto">--overwrite never</code> and reads what it wrote back (<code dir="auto">--verify</code>, restic 0.17 or later).
+<code dir="auto">F</code> restores a snapshot you name (<code dir="auto">latest</code> unless you type its ID), and
+after it, only the path you type. The screen shows what the backup leaves
+out.
+<code dir="auto">b</code> backs up the folders named (<code dir="auto">--exclude-caches</code> too), <code dir="auto">c</code> checks the
+repository’s structure. Each is a plan you review.</p>
+<p>Recovery tests prove a restore works before you need one. <code dir="auto">n</code> records a
+file’s SHA-256 (a file of your home folder, up to 100 MB) in
+<code dir="auto">recovery-baselines.json</code> beside the history, the last 50. Back it up, then
+<code dir="auto">v</code> on it restores it from a snapshot (the latest, or one you name) into a
+temporary folder, compares, says PASS or FAIL and removes the folder.</p>
+<p><code dir="auto">w</code> turns a daily backup on and <code dir="auto">W</code> a weekly one, and either turns it off
+when it is on: <code dir="auto">helix-toolbox-restic.timer</code> and its
+service in your systemd user folder, which run <code dir="auto">helix-toolbox restic backup --yes</code>. It needs the password from a file or a command, since the timer
+has none of your environment, and it never replaces or removes a unit it
+did not write. <code dir="auto">helix-toolbox restic</code> (<code dir="auto">files &lt;snapshot&gt; [folder]</code>,
+<code dir="auto">history &lt;pattern&gt;</code>, <code dir="auto">backup</code>, <code dir="auto">check</code>, <code dir="auto">restore &lt;snapshot&gt; &lt;folder&gt; [--include &lt;path&gt;]</code>, <code dir="auto">baseline [file]</code>, <code dir="auto">test &lt;baseline&gt; [snapshot]</code> and
+<code dir="auto">timer on|off [--weekly]</code>; plans with <code dir="auto">--dry-run</code> and <code dir="auto">--yes</code>, confirmed by
+typing BACKUP, CHECK, RESTORE or TEST) does the same. Settings turns the
+timed backup on, every day or every week, and off as well.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="repositories">Repositories</h2><a class="sl-anchor-link" href="#repositories"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Repositories”</span></a></div>
+<p><strong>Repositories</strong> lists the Git repositories under your project folders:
+<code dir="auto">[repositories]</code> in <code dir="auto">settings.toml</code> names them (<code dir="auto">roots</code>, absolute or under
+<code dir="auto">~/</code>, and <code dir="auto">depth</code>, 1 to 6 folders down, 3 by default); without it, the
+folders Command Center was set up with, read only; else those of
+<code dir="auto">~/github</code>, <code dir="auto">~/projects</code>, <code dir="auto">~/src</code>, <code dir="auto">~/code</code> and <code dir="auto">~/dotfiles</code> that exist. A
+folder holding <code dir="auto">.git</code> is a repository, and is not looked into for more;
+<code dir="auto">node_modules</code>, <code dir="auto">target</code>, <code dir="auto">.cache</code> and links are passed over. Each shows its
+branch, how many files changed, how it stands against its upstream and its
+latest commit; favorites (<code dir="auto">f</code>) come first.</p>
+<p>Reading changes nothing: git runs with optional locks off, without the
+repository’s hooks or file system monitor, with every content filter its
+settings name emptied (through <code dir="auto">GIT_CONFIG_COUNT</code>, so any name is given
+back exactly), and without submodules’ changes, each probe within 15
+seconds. A repository whose settings cannot be listed, or names a filter
+that cannot be named back, is not looked into; nor is any where git is
+older than 2.31.</p>
+<p><code dir="auto">Enter</code> opens a repository: its changed files (<code dir="auto">Enter</code> shows a file’s diff,
+staged and not; <code dir="auto">Space</code> stages it, or unstages it when it is all staged;
+<code dir="auto">A</code> stages every change), its branches (<code dir="auto">Enter</code> switches; <code dir="auto">b</code> creates one
+and switches to it), its stashes (<code dir="auto">s</code> stashes the changes, new files too;
+<code dir="auto">Enter</code> applies one with its index, keeping it), its tasks and its recent
+commits. <code dir="auto">c</code> commits what is staged, <code dir="auto">F</code> fetches every remote, <code dir="auto">p</code> pulls,
+fast-forward only, and <code dir="auto">P</code> pushes to the upstream, never forcing, or
+publishes the branch to <code dir="auto">origin</code> when it has none. Each is a plan, reviewed
+first, that checks again when it runs: a commit that what is staged, HEAD
+and the branch are as reviewed and nothing is under way; a branch switch,
+a pull and a stash applied that the repository has no changes. A
+repository in the middle of a merge, rebase, cherry-pick or revert is left
+to git. Network steps ask for no password: a remote that needs one fails.
+The repository’s hooks and commit signing run as they do with git.</p>
+<p>Tasks are found in the repository’s manifests, which are read, never run:
+<code dir="auto">package.json</code> scripts (<code dir="auto">build</code>, <code dir="auto">test</code>, <code dir="auto">dev</code>, <code dir="auto">lint</code>, <code dir="auto">check</code>, <code dir="auto">start</code>),
+Cargo (<code dir="auto">build</code>, <code dir="auto">test</code>, <code dir="auto">check</code>, <code dir="auto">run</code>), a Makefile’s <code dir="auto">all</code>, <code dir="auto">build</code>,
+<code dir="auto">test</code>, <code dir="auto">check</code> and <code dir="auto">lint</code> and a justfile’s <code dir="auto">build</code>, <code dir="auto">test</code>, <code dir="auto">check</code>,
+<code dir="auto">lint</code>, <code dir="auto">run</code> and <code dir="auto">dev</code>. <code dir="auto">n</code> keeps a command of your own as a task, in
+<code dir="auto">workspaces.toml</code> beside the settings, with your favorites; <code dir="auto">x</code> removes it.
+<code dir="auto">Enter</code> runs a task in the repository’s folder after you review it, its
+command split into words and run as it is, or with fish or bash when you
+say so (<code dir="auto">--shell</code>; in the terminal interface, begin the command with
+<code dir="auto">fish:</code> or <code dir="auto">bash:</code>). <code dir="auto">A</code> stages every change, after review.</p>
+<p><code dir="auto">helix-toolbox repos</code> (<code dir="auto">show</code>, <code dir="auto">diff [file] [--staged]</code>, <code dir="auto">stage [files] | --all</code>, <code dir="auto">unstage</code>, <code dir="auto">commit -m</code>, <code dir="auto">branch [--create]</code>, <code dir="auto">stash [-m] [--untracked]</code>, <code dir="auto">stash-apply</code>, <code dir="auto">fetch</code>, <code dir="auto">pull</code>, <code dir="auto">push</code>, <code dir="auto">publish [remote]</code>,
+<code dir="auto">tasks</code>, <code dir="auto">task</code>, <code dir="auto">task-add</code>, <code dir="auto">task-remove</code>, <code dir="auto">favorite [--off]</code>, <code dir="auto">group</code>; a
+repository by its name, or its path when names repeat; changes with
+<code dir="auto">--dry-run</code> and <code dir="auto">--yes</code>, confirmed by typing GIT, a task by typing TASK)
+does the same.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="configs">Configs</h2><a class="sl-anchor-link" href="#configs"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Configs”</span></a></div>
+<p><strong>Configs</strong> edits Ghostty’s and Fastfetch’s configuration. The file edited
+is the one <code dir="auto">[configs]</code> in <code dir="auto">settings.toml</code> names (<code dir="auto">ghostty_source</code>,
+<code dir="auto">fastfetch_source</code>, absolute or under <code dir="auto">~/</code>), else the one Command Center
+was set up with, read only, else the live file (<code dir="auto">ghostty/config</code>, or
+<code dir="auto">config.ghostty</code> where Ghostty 1.2 reads it, and <code dir="auto">fastfetch/config.jsonc</code>
+in the configuration folder). Where Home Manager links the live file into
+the Nix store, it is never edited there: its source in your dotfiles
+(<code dir="auto">configs/ghostty/config</code> or <code dir="auto">configs/fastfetch/config.jsonc</code> under
+<code dir="auto">~/dotfiles</code>, <code dir="auto">~/github/projects/dotfiles</code> or the dotfiles Command Center
+named) is, and when that file is part of a Home Manager flake, you are
+told to run Home Manager afterward. A file is only edited when it is a
+full path without <code dir="auto">..</code>, not in the Nix store, inside your home or
+configuration folder, and 512 KB at most.</p>
+<p>The checks: Ghostty’s own <code dir="auto">ghostty +validate-config</code> of a copy, in Helix
+Toolbox’s private folder beside the history (never a shared one, a link or
+another user’s), or, without Ghostty, said not to be checked; Fastfetch’s
+JSONC read here, comments and trailing commas allowed: one object, and
+<code dir="auto">modules</code> a list of names or objects with a <code dir="auto">"type"</code>.</p>
+<p><code dir="auto">Enter</code> on a field changes it in a draft: Ghostty’s font (the first
+<code dir="auto">font-family</code>; the others stay as fallbacks), font size, theme, padding,
+background opacity and cursor, the last line that sets each; Fastfetch’s
+logo, its type and the modules, in order, each kept with its options. The
+rest of the file, comments included, is left as it is. Several fields can
+change before one save: <code dir="auto">c</code> checks the draft, <code dir="auto">s</code> saves it and <code dir="auto">x</code>
+discards it. <code dir="auto">E</code> opens a private copy of the draft (or the file) in
+<code dir="auto">$VISUAL</code> or <code dir="auto">$EDITOR</code>, then checks it. Either way the save is a plan you
+review, the file side by side: run, it checks with <code dir="auto">sha256sum</code> that the
+file is as it was read, keeps it as a configuration backup beside it
+(<code dir="auto">&lt;file&gt;.helix-toolbox-backup-&lt;time&gt;</code>) and writes the new text, keeping the
+file’s permissions. Text that does not check is not saved. <code dir="auto">Enter</code> on a
+backup puts it back, the file there now kept as a backup first, as
+<strong>Backups</strong> and <code dir="auto">helix-toolbox restore</code> do; <code dir="auto">d</code> shows where the file is and
+its SHA-256, <code dir="auto">r</code> reads both again. <code dir="auto">helix-toolbox config &lt;ghostty | fastfetch&gt;</code> (<code dir="auto">validate [file]</code>, <code dir="auto">set &lt;field&gt; &lt;value&gt;</code>, <code dir="auto">edit</code>, <code dir="auto">history</code>;
+saving with <code dir="auto">--dry-run</code> and <code dir="auto">--yes</code>, confirmed by typing SAVE) does the
+same.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="home-manager">Home Manager</h2><a class="sl-anchor-link" href="#home-manager"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Home Manager”</span></a></div>
+<p><strong>Home Manager</strong> shows the configuration Home Manager builds: the folder
+<code dir="auto">flake</code> names under <code dir="auto">[home_manager]</code> in <code dir="auto">settings.toml</code> (<code dir="auto">~/</code> for the home
+folder; <code dir="auto">folder#name</code> or <code dir="auto">profile</code> for the flake’s <code dir="auto">homeConfigurations</code>
+name), else the dotfiles Command Center was set up with (their
+<code dir="auto">home-manager</code> folder when it holds <code dir="auto">flake.nix</code>) and its profile, read only,
+else <code dir="auto">~/.config/home-manager</code>, holding <code dir="auto">flake.nix</code> or <code dir="auto">home.nix</code>. Below it,
+the generations <code dir="auto">home-manager generations</code> lists, newest first, with the
+active one marked; the configuration’s Git repository (the nearest folder
+above it holding <code dir="auto">.git</code>, within your home folder), read as Repositories
+reads one; and which of your configuration files (Ghostty’s, Fastfetch’s,
+fish’s, Git’s, kitty’s and Neovim’s) Home Manager links into the Nix
+store, so are changed in the configuration rather than in place.</p>
+<p><code dir="auto">b</code> builds the configuration without activating it (<code dir="auto">home-manager build</code>,
+in its folder, which leaves a <code dir="auto">result</code> link), <code dir="auto">s</code> switches to it, and
+<code dir="auto">Enter</code> on an earlier generation goes back to it by running that
+generation’s own <code dir="auto">activate</code> script, as Home Manager’s manual says to; a
+generation the Nix store has collected cannot be. <code dir="auto">p</code> pulls the
+configuration’s repository, fast-forward only. Each is a plan you review.
+<code dir="auto">helix-toolbox home-manager</code> (<code dir="auto">generations</code>, <code dir="auto">build</code>, <code dir="auto">switch</code>, <code dir="auto">activate &lt;generation&gt;</code>, <code dir="auto">pull</code>; plans with <code dir="auto">--dry-run</code> and <code dir="auto">--yes</code>, confirmed by
+typing BUILD, SWITCH, ACTIVATE or GIT) does the same.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="reliability-and-trust">Reliability and trust</h2><a class="sl-anchor-link" href="#reliability-and-trust"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Reliability and trust”</span></a></div>
+<p><strong>Reliability</strong> lists every entry with how far it has been tested, the
+critical ones first (marked <code dir="auto">!</code>: boot loaders, the boot splash, the login
+screen, kernel security modules, graphics drivers and whole-system or disk
+changes):</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hardware Tested</td>
+<td>a tester ran it on a real machine and reported it (<code dir="auto">helix-toolbox report --worked</code>)</td>
+</tr>
+<tr>
+<td>VM Tested</td>
+<td>the Distributions workflow ran it for real in a virtual machine (Arch, Debian or Fedora, on BIOS or UEFI firmware, or the Arch live ISO), rebooted into the result and checked it</td>
+</tr>
+<tr>
+<td>Container Tested</td>
+<td>the Distributions workflow ran it in distribution containers and Helix Toolbox verified the result there</td>
+</tr>
+<tr>
+<td>Stand-in Tested</td>
+<td>installer tests run its script against stand-in commands and files, on every change and in each container</td>
+</tr>
+<tr>
+<td>Not Yet Validated</td>
+<td>nothing tests it yet beyond the checks every entry gets</td>
+</tr>
+</tbody>
+</table>
+<p>Beside each are the systems it was tested on, the date it was last verified
+and when it last ran successfully on this machine. Release builds carry the
+record of the Distributions run they were built after; other builds show the
+stand-in tests and reports only; what of that record cannot be read is
+said above the list. <code dir="auto">i</code> shows only critical or only untested
+entries, <code dir="auto">Enter</code> the evidence. Before a critical entry with no more than
+stand-in tests runs, its confirmation says so. <code dir="auto">helix-toolbox reliability [--critical]</code> prints the same.</p>
+<p>An entry that ran here can be reported as working: <code dir="auto">w</code> on it, or on its run
+in History (<strong>Report it worked…</strong> in the window), or <code dir="auto">helix-toolbox report --worked &lt;entry&gt; [--note "what you checked"]</code>. The report gives the entry,
+the date and version of its last successful run here, and the
+distribution, desktop, model and graphics cards with their drivers (no
+serial numbers, host name or user), with the <code dir="auto">[[hardware]]</code> record it asks
+for and a link that opens the issue form filled in. It is refused for a run
+that failed and in a virtual machine or a container. Nothing is sent until
+you submit the issue. In the terminal interface, <code dir="auto">c</code> copies the report with
+its link, as it does the bug report from Settings: through <code dir="auto">wl-copy</code>, <code dir="auto">xclip</code>
+or <code dir="auto">xsel</code> where the desktop has one, otherwise by asking the terminal itself
+(OSC 52, which Ghostty, Kitty, WezTerm, foot and tmux understand). Both are
+also saved under <code dir="auto">~/.local/state/helix-toolbox/</code>.</p>
+<p><code dir="auto">v</code> on any entry (or <code dir="auto">helix-toolbox trust &lt;id&gt;</code>) opens the <strong>trust inspector</strong>:
+the installer’s origin (Helix Toolbox’s own installers, Linutil’s, or commands
+built from package names), its file and SHA-256 checksum, its license and
+the software’s (as the package manager reports it), and three kinds of
+assurance kept apart:</p>
+<ul>
+<li><strong>Release provenance</strong>: whether this Helix Toolbox, which ships the catalog
+and every installer, is a release build with a signed build provenance
+attestation, and whether its download was checked against <code dir="auto">SHA256SUMS</code>.</li>
+<li><strong>Package integrity</strong>: what each package source checks: pacman’s
+signatures and the <code dir="auto">SigLevel</code> in effect, apt’s signed repositories, dnf’s
+<code dir="auto">gpgcheck</code>, zypper’s and Flatpak’s signatures; the AUR’s user-submitted
+build scripts are marked unverified.</li>
+<li><strong>Downloads the installer makes itself</strong>: sources pinned to a commit,
+downloads it checks with a checksum or signature, and ones nothing checks,
+such as a script piped into a shell or a plain HTTP address.</li>
+</ul>
+<p>Then the privileges it uses (a password, system files, services, the
+commands it runs as root) and its validation level.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="helix-doctor-backups-and-snapshots">Helix Doctor, backups and snapshots</h2><a class="sl-anchor-link" href="#helix-doctor-backups-and-snapshots"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Helix Doctor, backups and snapshots”</span></a></div>
+<p><strong>Helix Doctor</strong> checks the machine, read-only, and shows what it found:
+network and DNS (a name lookup of github.com), failed system and user
+services with their last journal lines, whether each graphics card has a
+driver in use (or nouveau where NVIDIA’s is wanted), a stale pacman lock or
+unfinished dpkg configuration, files in your home that belong to root,
+kernels without an initramfs, a GRUB configuration without its menu, the EFI
+partition’s room and free disk space. <code dir="auto">Enter</code> shows a check’s evidence and
+what to do; where a safe repair exists (restart the resolver or a service,
+remove a stale lock, <code dir="auto">dpkg --configure -a</code>, give files back to you, rebuild
+the initramfs or GRUB’s menu, clear package caches) <code dir="auto">f</code> runs it after its own
+confirmation, or runs the entry that addresses it (the graphics drivers).
+The counts of problems, notices and checks that are OK head the list, and
+a check’s details name the commands its repair runs. The Helix Doctor
+reports are listed below the checks, entries like any other: <code dir="auto">Enter</code> runs
+one, <code dir="auto">Space</code> queues it, <code dir="auto">d</code>, <code dir="auto">p</code>, <code dir="auto">v</code> and <code dir="auto">*</code> as in the areas.
+<code dir="auto">helix-toolbox doctor</code> prints the checks and <code dir="auto">helix-toolbox doctor --repair &lt;id&gt;</code> runs one repair.</p>
+<p>The <strong>Backups</strong> screen (and <code dir="auto">helix-toolbox backups</code>) lists the configuration
+backups Helix Toolbox’s entries leave beside a file before changing it
+(<code dir="auto">&lt;file&gt;.commander-backup-&lt;time&gt;</code>, <code dir="auto">&lt;file&gt;.helix-toolbox-backup-&lt;time&gt;</code>), newest
+first: your own in <code dir="auto">~/.config</code>, <code dir="auto">~/.local/share</code> and <code dir="auto">~</code>, and system ones in
+<code dir="auto">/etc</code>, <code dir="auto">/boot</code> and the SDDM theme and font folders. <code dir="auto">Enter</code> (or <code dir="auto">helix-toolbox restore &lt;backup&gt;</code>) puts one back after a confirmation: the file now in its
+place is moved aside as its own backup first, so a restore can be undone the
+same way; system files ask for your password. Only backups Helix Toolbox finds
+can be restored.</p>
+<p>On Btrfs with Snapper (a <code dir="auto">root</code> configuration) or with Timeshift, a snapshot
+is taken first before runs that change system files, the kernel or disks
+(flags PFM, K, D, SI, or high risk): <strong>Snapshot before system changes</strong> in
+Settings, which the command line follows too; <code dir="auto">--snapshot</code> takes one there
+when Settings turns it off. If the snapshot fails, the steps it was for
+are not run even when a run continues after a failed step (the rest of
+the run still does), and they stay in the Install Plan to try again.
+Where such a run gets no snapshot because neither is set up, its confirmation says so (<code dir="auto">No snapshot: neither Snapper nor Timeshift is set up here.</code>), and <code dir="auto">--snapshot</code> on a run that changes
+none of those says it takes none. Helix Toolbox does not roll
+snapshots or packages back itself; the Backups screen says where to (Btrfs
+Assistant, <code dir="auto">snapper rollback</code>, Timeshift).</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-command-line">The command line</h2><a class="sl-anchor-link" href="#the-command-line"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “The command line”</span></a></div>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="sh"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">system</span><span style="--0:#D6DEEB;--1:#403F53">                     </span><span style="--0:#919F9F;--1:#5F636F"># the distribution and package manager it sees</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">list</span><span style="--0:#D6DEEB;--1:#403F53">                       </span><span style="--0:#919F9F;--1:#5F636F"># the catalog as tabs, groups and entries</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">search</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">rip</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">grep</span><span style="--0:#D6DEEB;--1:#403F53">            </span><span style="--0:#919F9F;--1:#5F636F"># entries by name, id or description, closest first</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">info</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">git</span><span style="--0:#D6DEEB;--1:#403F53">                   </span><span style="--0:#919F9F;--1:#5F636F"># one entry</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">status</span><span style="--0:#D6DEEB;--1:#403F53">                     </span><span style="--0:#919F9F;--1:#5F636F"># every package entry: installed, update, managed or not</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">update</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--dry-run</span><span style="--0:#D6DEEB;--1:#403F53">           </span><span style="--0:#919F9F;--1:#5F636F"># what updating every entry with an update would run</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">updates</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--online</span><span style="--0:#D6DEEB;--1:#403F53">           </span><span style="--0:#919F9F;--1:#5F636F"># what each package tool has waiting</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">updates</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--apply</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--dry-run</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#919F9F;--1:#5F636F"># what updating those channels would run</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">notifications</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">on</span><span style="--0:#D6DEEB;--1:#403F53">           </span><span style="--0:#919F9F;--1:#5F636F"># tell me on the desktop when updates wait; off, check, or nothing for what is on</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">notifications</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">health</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">on</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#919F9F;--1:#5F636F"># and of new health problems; drift &lt;baseline&gt; for Drift</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">plan</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">git</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">system-report</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#919F9F;--1:#5F636F"># what running entries would do</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">run</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">git</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--dry-run</span><span style="--0:#D6DEEB;--1:#403F53">          </span><span style="--0:#919F9F;--1:#5F636F"># the plan, nothing changed</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">run</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">git</span><span style="--0:#D6DEEB;--1:#403F53">                    </span><span style="--0:#919F9F;--1:#5F636F"># runs after you type RUN, asked on the terminal even when piped</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">remove</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">ardour</span><span style="--0:#D6DEEB;--1:#403F53">              </span><span style="--0:#919F9F;--1:#5F636F"># removes a package entry that offers it</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">profile</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">list</span><span style="--0:#D6DEEB;--1:#403F53">               </span><span style="--0:#919F9F;--1:#5F636F"># your profiles; also export, import, delete</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">drift</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">save</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Old laptop</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#919F9F;--1:#5F636F"># record this machine as a baseline</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">drift</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">check</span><span style="--0:#D6DEEB;--1:#403F53">                </span><span style="--0:#919F9F;--1:#5F636F"># how it differs now; --profile &lt;name&gt; for a profile</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">setup</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">gaming</span><span style="--0:#D6DEEB;--1:#403F53">               </span><span style="--0:#919F9F;--1:#5F636F"># what the Gaming workstation would add here, as a plan</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">bundle</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">create</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">~/b</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">git</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">htop</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#919F9F;--1:#5F636F"># packages and Helix Toolbox, for a machine offline</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">desktop</span><span style="--0:#D6DEEB;--1:#403F53">                    </span><span style="--0:#919F9F;--1:#5F636F"># the desktop, its look and who else sets it</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">plan</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">sddm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--effects</span><span style="--0:#D6DEEB;--1:#403F53">        </span><span style="--0:#919F9F;--1:#5F636F"># what it would change, files side by side</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--effects</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">plan</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--fetch-sources</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">dotfiles-nvim</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#919F9F;--1:#5F636F"># with the dotfiles source to compare</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">hardware</span><span style="--0:#D6DEEB;--1:#403F53">                   </span><span style="--0:#919F9F;--1:#5F636F"># firmware, disks, temperatures, batteries, devices</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">services</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">list</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--failed</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#919F9F;--1:#5F636F"># systemd units; show, start, stop, restart, enable, disable</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">startup</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">off</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">&lt;file&gt;</span><span style="--0:#D6DEEB;--1:#403F53">         </span><span style="--0:#919F9F;--1:#5F636F"># what the desktop starts at login, for you</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">storage</span><span style="--0:#D6DEEB;--1:#403F53">                    </span><span style="--0:#919F9F;--1:#5F636F"># where the space goes; storage clean &lt;item&gt; frees some</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">performance</span><span style="--0:#D6DEEB;--1:#403F53">                </span><span style="--0:#919F9F;--1:#5F636F"># this boot, the machine now, and the boot before; boots, compare</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">recovery</span><span style="--0:#D6DEEB;--1:#403F53">                   </span><span style="--0:#919F9F;--1:#5F636F"># snapshots, kernels, backups; --check-snapshots looks inside, as root</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">migrate</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">export</span><span style="--0:#D6DEEB;--1:#403F53"> [file]      </span><span style="--0:#919F9F;--1:#5F636F"># what this machine has, to take to another</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">migrate</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">show</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">&lt;file&gt;</span><span style="--0:#D6DEEB;--1:#403F53">        </span><span style="--0:#919F9F;--1:#5F636F"># what a migration means here; migrate apply installs it</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">restic</span><span style="--0:#D6DEEB;--1:#403F53">                     </span><span style="--0:#919F9F;--1:#5F636F"># the repository and its snapshots; history, restore, test</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">repos</span><span style="--0:#D6DEEB;--1:#403F53">                      </span><span style="--0:#919F9F;--1:#5F636F"># the Git repositories under your project folders</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">config</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">ghostty</span><span style="--0:#D6DEEB;--1:#403F53">             </span><span style="--0:#919F9F;--1:#5F636F"># the file edited, its checks and fields; set, edit, history</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">repos</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">show</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">&lt;repo&gt;</span><span style="--0:#D6DEEB;--1:#403F53">          </span><span style="--0:#919F9F;--1:#5F636F"># its changes, branches, stashes, commits and tasks; stage, commit, push...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">home-manager</span><span style="--0:#D6DEEB;--1:#403F53">               </span><span style="--0:#919F9F;--1:#5F636F"># its configuration and generations; build, switch, activate, pull</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">reliability</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--critical</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#919F9F;--1:#5F636F"># how far the boot, login and driver entries are tested</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">trust</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">sddm</span><span style="--0:#D6DEEB;--1:#403F53">                 </span><span style="--0:#919F9F;--1:#5F636F"># where an entry comes from and what checks it</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">doctor</span><span style="--0:#D6DEEB;--1:#403F53">                     </span><span style="--0:#919F9F;--1:#5F636F"># health checks, read-only</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">doctor</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--repair</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">permissions</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#919F9F;--1:#5F636F"># one repair, after confirmation</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">backups</span><span style="--0:#D6DEEB;--1:#403F53">                    </span><span style="--0:#919F9F;--1:#5F636F"># configuration backups, newest first</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">restore</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">&lt;backup&gt;</span><span style="--0:#D6DEEB;--1:#403F53">           </span><span style="--0:#919F9F;--1:#5F636F"># put one back, keeping the current file</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">history</span><span style="--0:#D6DEEB;--1:#403F53">                    </span><span style="--0:#919F9F;--1:#5F636F"># recent runs</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">docgen</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">docs/walkthrough.md</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#919F9F;--1:#5F636F"># the catalog as Markdown</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">status</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--json</span><span style="--0:#D6DEEB;--1:#403F53">              </span><span style="--0:#919F9F;--1:#5F636F"># any reading command, or a --dry-run plan, as JSON</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">report</span><span style="--0:#D6DEEB;--1:#403F53">                     </span><span style="--0:#919F9F;--1:#5F636F"># what a bug report needs, to paste into an issue</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">report</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">--worked</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">sddm</span><span style="--0:#D6DEEB;--1:#403F53">       </span><span style="--0:#919F9F;--1:#5F636F"># that an entry worked here, for its Hardware Tested record</span></div></div><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">helix-toolbox</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">verify</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">sddm</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">grub-dracula</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#919F9F;--1:#5F636F"># whether entries left the machine as they should, read-only</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="helix-toolbox system                     # the distribution and package manager it seeshelix-toolbox list                       # the catalog as tabs, groups and entrieshelix-toolbox search rip grep            # entries by name, id or description, closest firsthelix-toolbox info git                   # one entryhelix-toolbox status                     # every package entry: installed, update, managed or nothelix-toolbox update --dry-run           # what updating every entry with an update would runhelix-toolbox updates --online           # what each package tool has waitinghelix-toolbox updates --apply --dry-run  # what updating those channels would runhelix-toolbox notifications on           # tell me on the desktop when updates wait; off, check, or nothing for what is onhelix-toolbox notifications health on    # and of new health problems; drift <baseline> for Drifthelix-toolbox plan git system-report     # what running entries would dohelix-toolbox run git --dry-run          # the plan, nothing changedhelix-toolbox run git                    # runs after you type RUN, asked on the terminal even when pipedhelix-toolbox remove ardour              # removes a package entry that offers ithelix-toolbox profile list               # your profiles; also export, import, deletehelix-toolbox drift save &quot;Old laptop&quot;    # record this machine as a baselinehelix-toolbox drift check                # how it differs now; --profile <name> for a profilehelix-toolbox setup gaming               # what the Gaming workstation would add here, as a planhelix-toolbox bundle create ~/b git htop # packages and Helix Toolbox, for a machine offlinehelix-toolbox desktop                    # the desktop, its look and who else sets ithelix-toolbox plan sddm --effects        # what it would change, files side by sidehelix-toolbox --effects plan --fetch-sources dotfiles-nvim  # with the dotfiles source to comparehelix-toolbox hardware                   # firmware, disks, temperatures, batteries, deviceshelix-toolbox services list --failed     # systemd units; show, start, stop, restart, enable, disablehelix-toolbox startup off <file>         # what the desktop starts at login, for youhelix-toolbox storage                    # where the space goes; storage clean <item> frees somehelix-toolbox performance                # this boot, the machine now, and the boot before; boots, comparehelix-toolbox recovery                   # snapshots, kernels, backups; --check-snapshots looks inside, as roothelix-toolbox migrate export [file]      # what this machine has, to take to anotherhelix-toolbox migrate show <file>        # what a migration means here; migrate apply installs ithelix-toolbox restic                     # the repository and its snapshots; history, restore, testhelix-toolbox repos                      # the Git repositories under your project foldershelix-toolbox config ghostty             # the file edited, its checks and fields; set, edit, historyhelix-toolbox repos show <repo>          # its changes, branches, stashes, commits and tasks; stage, commit, push...helix-toolbox home-manager               # its configuration and generations; build, switch, activate, pullhelix-toolbox reliability --critical     # how far the boot, login and driver entries are testedhelix-toolbox trust sddm                 # where an entry comes from and what checks ithelix-toolbox doctor                     # health checks, read-onlyhelix-toolbox doctor --repair permissions  # one repair, after confirmationhelix-toolbox backups                    # configuration backups, newest firsthelix-toolbox restore <backup>           # put one back, keeping the current filehelix-toolbox history                    # recent runshelix-toolbox docgen docs/walkthrough.md # the catalog as Markdownhelix-toolbox status --json              # any reading command, or a --dry-run plan, as JSONhelix-toolbox report                     # what a bug report needs, to paste into an issuehelix-toolbox report --worked sddm       # that an entry worked here, for its Hardware Tested recordhelix-toolbox verify sddm grub-dracula   # whether entries left the machine as they should, read-only"><div></div></button></div></figure></div>
+<p>A plan the command line runs (<code dir="auto">run</code>, <code dir="auto">remove</code>, <code dir="auto">update</code>, <code dir="auto">restore</code> and the
+other commands that change the machine) shows the confirmation the menu
+and the window show, as text: each step with its command, the notes and
+what is not run, then <code dir="auto">Risk: medium · asks for your password</code>, what the
+checks before a run found, <code dir="auto">Warning:</code> lines (the plan’s own, and how
+entries were tested), and <code dir="auto">After a failed step: stop (Settings changes it)</code> when there is more than one step. It follows the run choices in
+Settings, as they do: a snapshot first before system changes, and whether
+a failed step stops the run; <code dir="auto">--snapshot</code> and <code dir="auto">--keep-going</code> turn those on
+for one run. A plan that continues past a failure itself, such as
+<code dir="auto">migrate apply</code>’s, does so whatever Settings says, in every interface. <code dir="auto">plan</code> and <code dir="auto">--dry-run</code> show the same without running
+anything; a blocked plan lists its steps and what blocks it.</p>
+<p><code dir="auto">--json</code> prints one JSON document for other programs instead of text; it
+works with the commands that read and with <code dir="auto">--dry-run</code> plans, and refuses
+anything that would change the machine. The shapes are in
+<a href="https://github.com/Commanderx-code/Helix-toolbox/blob/v1.25.8/docs/docs/JSON.md">docs/JSON.md</a>.</p>
+</div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"><a href="https://github.com/Commanderx-code/Helix-toolbox/edit/main/docs/REFERENCE.md" class="sl-flex print:hidden astro-qlekgd3o"><svg aria-hidden="true" class="astro-qlekgd3o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/toolbox/catalog/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">Previous<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">The catalog and plans</span></span></a><a href="/toolbox/json/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">Next<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">JSON output</span></span></a></div></footer><div class="helix-footer astro-jo6i4kqk"><a href="https://helixtech.app/" class="logo astro-jo6i4kqk"><img src="/_astro/logo-on-dark.CSnaoQmP_1Ssk9D.webp" alt="Helix Tech" loading="lazy" decoding="async" width="116" height="28" class="light:sl-hidden astro-jo6i4kqk"><img src="/_astro/logo-on-light.YO6SStN0_rGh5y.webp" alt="Helix Tech" loading="lazy" decoding="async" width="116" height="28" class="dark:sl-hidden astro-jo6i4kqk"></a><nav aria-label="Helix Tech" class="astro-jo6i4kqk"><a href="https://helixtech.app/" class="astro-jo6i4kqk">helixtech.app</a><a href="https://helixtech.app/#tools" class="astro-jo6i4kqk">Tools</a><a href="https://github.com/Commanderx-code" class="astro-jo6i4kqk">GitHub</a><a href="https://helixtech.app/privacy/" class="astro-jo6i4kqk">Privacy</a></nav><p class="astro-jo6i4kqk">© 2026 Helix Tech LLC. Helix Tech™ is a trademark of Helix Tech LLC.</p></div></div></div></main></div></div></div></div></body></html>
