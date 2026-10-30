@@ -52,6 +52,33 @@ export function extractTitle(markdown) {
   };
 }
 
+const SUMMARY_MAX = 160;
+
+/**
+ * The page's first paragraph as plain text, for its description: at most
+ * 160 characters, cut after a whole sentence when one fits, else at a word.
+ * Only the intro before the first heading counts; badges, HTML and notes
+ * are passed over.
+ * @param {string} markdown
+ * @returns {string | undefined}
+ */
+export function summarize(markdown) {
+  for (const node of parse(markdown).children) {
+    if (node.type === 'heading') break;
+    if (node.type !== 'paragraph') continue;
+    let text = toString(node, { includeImageAlt: false }).replace(/\s+/g, ' ').trim();
+    if (!text || text.startsWith(':::')) continue;
+    // A paragraph that leads into a list ends with a colon: keep what comes before
+    if (text.endsWith(':')) text = text.match(/^.*[.!?](?=\s)/)?.[0] ?? `${text.slice(0, -1)}.`;
+    if (text.length <= SUMMARY_MAX) return text;
+    const fits = text.slice(0, SUMMARY_MAX);
+    const sentence = fits.match(/^.*[.!?](?=\s)/);
+    if (sentence) return sentence[0];
+    return `${fits.slice(0, fits.lastIndexOf(' ', SUMMARY_MAX - 1))}…`;
+  }
+  return undefined;
+}
+
 /**
  * Splits a README into the intro (before the first `##`) and one page per
  * listed `##` section. Sections not listed are returned in `skipped`.
