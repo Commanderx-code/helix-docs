@@ -161,6 +161,13 @@ describe('rewrite images', () => {
     expect(images).toEqual([]);
   });
 
+  test('copies an image inside a link and rewrites both', () => {
+    const md = '[![s](assets/s.png)](assets/s.png)\n';
+    const { markdown, images } = rewrite(md, boot({ sourcePath: 'README.md' }));
+    expect(markdown).toBe('[![s](./s.png)](https://github.com/Commanderx-code/helix-boot/blob/v0.7.7/assets/s.png)\n');
+    expect(images).toEqual([{ from: 'assets/s.png', to: 'src/content/docs/boot/s.png' }]);
+  });
+
   test('drops the link around a dropped image', () => {
     const md = 'A [![t](themes-imported.jpg)](themes-imported.jpg) B\n';
     const { markdown } = rewrite(md, boot({ excludeImages: ['docs/themes-imported.jpg'] }));
@@ -222,5 +229,39 @@ describe('splitReadme', () => {
     expect(() => splitReadme(readme, [...sections, { heading: 'Setup', slug: 'setup', label: 'Setup', order: 1 }])).toThrow(
       'Listed section missing: Setup',
     );
+  });
+});
+
+describe('GitHub alerts', () => {
+  test('become Starlight asides', () => {
+    const md = 'Before.\n\n> [!TIP]\n> Use **Parted Magic** for [SSDs](GUIDE.md).\n>\n> Second paragraph.\n\nAfter.\n';
+    expect(rewrite(md, toolbox()).markdown).toBe(
+      'Before.\n\n:::tip\nUse **Parted Magic** for [SSDs](/toolbox/guide/).\n\nSecond paragraph.\n:::\n\nAfter.\n',
+    );
+  });
+
+  test('map each kind to an aside', () => {
+    const kinds = { NOTE: ':::note', IMPORTANT: ':::note[Important]', WARNING: ':::caution', CAUTION: ':::danger' };
+    for (const [kind, aside] of Object.entries(kinds)) {
+      expect(rewrite(`> [!${kind}]\n> Text.\n`, toolbox()).markdown).toBe(`${aside}\nText.\n:::\n`);
+    }
+  });
+
+  test('leave plain quotes alone', () => {
+    const md = '> A quote [!TIP] here.\n';
+    expect(rewrite(md, toolbox()).markdown).toBe(md);
+  });
+});
+
+describe('dropBlocks', () => {
+  test('removes top-level blocks that start with a listed text', () => {
+    const md = 'Intro.\n\n| Plex rows | Edit |\n| --- | --- |\n| ![a](a.jpg) | ![b](b.jpg) |\n\n*Shown with a wallpaper of your own.*\n\nAfter.\n';
+    const ctx = toolbox({ images: false, dropBlocks: ['| Plex rows |', '*Shown with a wallpaper'] });
+    expect(rewrite(md, ctx).markdown).toBe('Intro.\n\nAfter.\n');
+  });
+
+  test('leaves blocks that only mention the text later', () => {
+    const md = 'See | Plex rows | here.\n';
+    expect(rewrite(md, toolbox({ dropBlocks: ['| Plex rows |'] })).markdown).toBe(md);
   });
 });

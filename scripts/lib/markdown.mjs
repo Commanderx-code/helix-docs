@@ -213,7 +213,8 @@ function inlineDestination(source, node) {
   const e = end(node);
   if (source[s] !== '[' && source[s] !== '!') return null;
   if (source[e - 1] !== ')') return null;
-  const open = source.lastIndexOf('](', e);
+  // Search before this node's own `)`: a link around an image starts its `](` right at the image's end
+  const open = source.lastIndexOf('](', e - 3);
   if (open < s) return null;
   return destinationRange(source, open + 2, e - 1);
 }
@@ -260,11 +261,45 @@ function rewriteHtml(node, parent, source, ctx, images) {
   return text === html ? null : { start: s, end: e, text };
 }
 
+const ASIDES = { NOTE: 'note', TIP: 'tip', IMPORTANT: 'note[Important]', WARNING: 'caution', CAUTION: 'danger' };
+
+/** Turns GitHub alerts (`> [!TIP]` quotes) at the top level into Starlight asides. */
+function convertAlerts(source) {
+  const edits = [];
+  for (const node of parse(source).children) {
+    if (node.type !== 'blockquote') continue;
+    const lines = source.slice(start(node), end(node)).split('\n');
+    const kind = lines[0].match(/^>\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*$/);
+    if (!kind) continue;
+    const body = lines
+      .slice(1)
+      .map((line) => line.replace(/^>\s?/, ''))
+      .join('\n')
+      .trim();
+    edits.push({ start: start(node), end: end(node), text: `:::${ASIDES[kind[1]]}\n${body}\n:::` });
+  }
+  return applyEdits(source, edits);
+}
+
+/** Applies edits to the text; outer edits win over edits inside them. */
+function applyEdits(source, edits) {
+  edits.sort((a, b) => a.start - b.start || b.end - a.end);
+  let out = '';
+  let at = 0;
+  for (const edit of edits) {
+    if (edit.start < at) continue;
+    out += source.slice(at, edit.start) + edit.text;
+    at = edit.end;
+  }
+  return out + source.slice(at);
+}
+
 /**
- * Rewrites links and images of one page.
+ * Rewrites links and images of one page, and GitHub alerts into asides.
  * @param {string} markdown
  * @param {{ repo: string, ref: string, sourcePath: string, siteUrls: Map<string, string>,
- *   anchorUrls?: Map<string, string>, excludeImages: string[], images: boolean, imageDir: string }} ctx
+ *   anchorUrls?: Map<string, string>, excludeImages: string[], images: boolean, imageDir: string,
+ *   dropBlocks?: string[] }} ctx dropBlocks: top-level blocks starting with one of these texts are removed
  * @returns {{ markdown: string, images: { from: string, to: string }[] }}
  */
 export function rewrite(markdown, ctx) {
@@ -272,7 +307,12 @@ export function rewrite(markdown, ctx) {
   const images = [];
   const edits = [];
 
-  visit(parse(source), (node, _index, parent) => {
+  const tree = parse(source);
+  for (const node of tree.children) {
+    if (ctx.dropBlocks?.some((text) => source.startsWith(text, start(node)))) edits.push(blockRemoval(source, node));
+  }
+
+  visit(tree, (node, _index, parent) => {
     if (node.type === 'link') {
       const range = inlineDestination(source, node);
       const next = range && resolveLink(node.url, ctx);
@@ -297,15 +337,6 @@ export function rewrite(markdown, ctx) {
     }
   });
 
-  // Outer edits win over edits inside them (a dropped link around an image)
-  edits.sort((a, b) => a.start - b.start || b.end - a.end);
-  let out = '';
-  let at = 0;
-  for (const edit of edits) {
-    if (edit.start < at) continue;
-    out += source.slice(at, edit.start) + edit.text;
-    at = edit.end;
-  }
-  out += source.slice(at);
-  return { markdown: out, images };
+  // Alerts are a second pass, so links inside them are already rewritten
+  return { markdown: convertAlerts(applyEdits(source, edits)), images };
 }
