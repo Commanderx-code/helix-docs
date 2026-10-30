@@ -4,9 +4,8 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { elements } from './lib/html.mjs';
 
-const TAG = /<([a-z][a-z0-9-]*)\b((?:[^>"']|"[^"]*"|'[^']*')*)>/gi;
-const ATTR = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
 // Attributes that make the browser fetch something, per element
 const LOADS = {
   script: ['src'],
@@ -20,12 +19,8 @@ const LOADS = {
   input: ['src'],
 };
 const LINK_LOADS = new Set(['stylesheet', 'icon', 'preload', 'modulepreload', 'prefetch', 'manifest', 'apple-touch-icon']);
-
-function attributes(text) {
-  const attrs = new Map();
-  for (const m of text.matchAll(ATTR)) attrs.set(m[1].toLowerCase(), m[2] ?? m[3] ?? m[4] ?? '');
-  return attrs;
-}
+// Where the build writes scripts: Astro's bundles and the moved inline scripts
+const SCRIPT_PATHS = ['/_astro/', '/_scripts/'];
 
 const urlsOf = (name, value) => (name === 'srcset' ? value.split(',').map((part) => part.trim().split(/\s+/)[0]) : [value]);
 const isRemote = (url) => /^(https?:)?\/\//i.test(url.trim());
@@ -38,18 +33,16 @@ const isData = (url) => /^data:/i.test(url.trim());
  */
 export function checkHtml(html, file) {
   const problems = [];
-  for (const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
-    const attrs = attributes(m[1]);
-    if (!attrs.has('src') && attrs.get('type') !== 'application/ld+json') {
-      problems.push(`${file}: inline script: ${m[2].trim().slice(0, 80)}`);
+  for (const { tag, attrs, text } of elements(html)) {
+    if (tag === 'script') {
+      const src = attrs.get('src');
+      if (src === undefined && attrs.get('type') !== 'application/ld+json') {
+        problems.push(`${file}: inline script: ${text.trim().slice(0, 80)}`);
+      } else if (src !== undefined && !isRemote(src) && !SCRIPT_PATHS.some((p) => src.startsWith(p))) {
+        problems.push(`${file}: script from a path the build does not write: ${src}`);
+      }
     }
-  }
-  for (const m of html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) {
-    problems.push(`${file}: <style> element: ${m[1].trim().slice(0, 80)}`);
-  }
-  for (const m of html.matchAll(TAG)) {
-    const tag = m[1].toLowerCase();
-    const attrs = attributes(m[2]);
+    if (tag === 'style') problems.push(`${file}: <style> element: ${text.trim().slice(0, 80)}`);
     for (const name of attrs.keys()) {
       if (/^on[a-z]+$/.test(name)) problems.push(`${file}: <${tag} ${name}> event handler`);
     }
