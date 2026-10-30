@@ -17,7 +17,11 @@ const parse = (markdown) => parser.parse(markdown);
 
 const posix = path.posix;
 const IMG_TAG = /<img\b[^>]*>/gi;
-const A_HREF = /(<a\b[^>]*?\bhref\s*=\s*)(?:"([^"]*)"|'([^']*)')/gi;
+const A_HREF = /(<a\b[^>]*?\bhref\s*=\s*)(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))/gi;
+// HTML a README may use; anything else (meta, iframe, form, picture...) fails the page
+const ALLOWED_TAGS = new Set(
+  'a abbr b blockquote br code dd del details div dl dt em figcaption figure h1 h2 h3 h4 h5 h6 hr i img ins kbd li mark ol p pre s samp small span strong sub summary sup table tbody td tfoot th thead tr u ul'.split(' '),
+);
 const PHRASING_PARENTS = new Set(['paragraph', 'heading', 'link', 'emphasis', 'strong', 'delete', 'tableCell']);
 
 const start = (node) => node.position.start.offset;
@@ -74,24 +78,40 @@ export function splitReadme(markdown, sections) {
       skipped.push(heading);
       return;
     }
-    const anchors = [anchorOf.get(node)];
-    for (const [other, anchor] of anchorOf) {
-      if (start(other) > start(node) && start(other) < stop) anchors.push(anchor);
-    }
     found.set(heading, {
       slug: section.slug,
       label: section.label,
       order: section.order,
       body: tidy(markdown.slice(end(node), stop)),
-      anchors,
     });
   });
 
   for (const section of sections) {
     if (!found.has(section.heading)) throw new Error(`Listed section missing: ${section.heading}`);
   }
+
+  // Where each README anchor ends up: its page (null for the intro) and the
+  // id the heading gets there, since each page numbers repeated headings alone
+  const anchorTargets = new Map();
+  const pageSluggers = new Map();
+  for (const [node, anchor] of anchorOf) {
+    const owner = h2s.filter((h2) => start(h2) <= start(node)).at(-1);
+    let page = null;
+    if (owner) {
+      const section = sections.find((s) => s.heading === toString(owner).trim());
+      if (!section) continue;
+      page = section.slug;
+      if (node === owner) {
+        anchorTargets.set(anchor, { page, anchor: '' });
+        continue;
+      }
+    }
+    if (!pageSluggers.has(page)) pageSluggers.set(page, new GithubSlugger());
+    anchorTargets.set(anchor, { page, anchor: pageSluggers.get(page).slug(toString(node)) });
+  }
+
   const pages = [...found.values()].sort((a, b) => a.order - b.order);
-  return { intro, pages, skipped };
+  return { intro, pages, skipped, anchorTargets };
 }
 
 /** Splits `path#hash` (dropping any query) into its parts. */
@@ -125,17 +145,24 @@ function repoPath(pathPart, ctx) {
 function resolveLink(url, ctx) {
   if (!url || isExternal(url)) return null;
   const { pathPart, hash } = splitUrl(url);
-  if (!pathPart) return hash && ctx.anchorUrls?.get(hash) ? ctx.anchorUrls.get(hash) : null;
+  const github = (kind, target) => {
+    const base = `https://github.com/${ctx.repo}/${kind}/${ctx.ref}`;
+    return target ? `${base}/${encodeURI(target)}` : base;
+  };
+  // In a split README an anchor may be on another page, or in a section left
+  // out of the site, where only GitHub has it
+  const readmeAnchor = (anchor) => ctx.anchorUrls.get(anchor) ?? `${github('blob', ctx.sourcePath)}#${anchor}`;
+  if (!pathPart) return hash && ctx.anchorUrls ? readmeAnchor(hash) : null;
 
   const target = repoPath(pathPart, ctx);
-  if (target === null) return null;
+  // Above the repository root: GitHub would not find it either
+  if (target === null) return github('tree', '');
   const suffix = hash ? `#${hash}` : '';
-  if (target === ctx.sourcePath && hash && ctx.anchorUrls?.has(hash)) return ctx.anchorUrls.get(hash);
+  if (target === ctx.sourcePath && hash && ctx.anchorUrls) return readmeAnchor(hash);
   if (ctx.siteUrls.has(target)) return ctx.siteUrls.get(target) + suffix;
 
   const isFile = !pathPart.endsWith('/') && /\.[^/]+$/.test(target);
-  const base = `https://github.com/${ctx.repo}/${isFile ? 'blob' : 'tree'}/${ctx.ref}`;
-  return (target ? `${base}/${encodeURI(target)}` : base) + suffix;
+  return github(isFile ? 'blob' : 'tree', target) + suffix;
 }
 
 /**
@@ -145,9 +172,10 @@ function resolveLink(url, ctx) {
 function imageSource(url, ctx) {
   if (!url) return null;
   const sameRepo = (owner, repo) => `${owner}/${repo}`.toLowerCase() === ctx.repo.toLowerCase();
-  let match = url.match(/^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/[^/]+\/([^?#]+)/);
+  // The branch or tag in the URL is skipped: images come from the build's ref
+  let match = url.match(/^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/(?:refs\/(?:heads|tags)\/)?[^/]+\/([^?#]+)/);
   if (match && sameRepo(match[1], match[2])) return decodeURI(match[3]);
-  match = url.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/(?:blob|raw)\/[^/]+\/([^?#]+)/);
+  match = url.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/(?:blob|raw)\/(?:refs\/(?:heads|tags)\/)?[^/]+\/([^?#]+)/);
   if (match && sameRepo(match[1], match[2])) return decodeURI(match[3]);
   if (isExternal(url)) return null;
   return repoPath(splitUrl(url).pathPart, ctx);
@@ -207,16 +235,40 @@ function destinationRange(source, from, limit) {
   return [i, j];
 }
 
-/** Offsets of the destination of an inline link or image node, or null for autolinks. */
+/** The offset of the `]` closing a bracket opened just before `from`, or -1. */
+function closingBracket(source, from) {
+  let depth = 0;
+  for (let i = from; i < source.length; i++) {
+    const ch = source[i];
+    if (ch === '\\') i++;
+    else if (ch === '[') depth++;
+    else if (ch === ']') {
+      if (depth === 0) return i;
+      depth--;
+    }
+  }
+  return -1;
+}
+
+/**
+ * Offsets of the destination of an inline link or image node, or null for
+ * autolinks and references. Found from the end of the link text, so a title
+ * containing `](` is not mistaken for it.
+ */
 function inlineDestination(source, node) {
   const s = start(node);
   const e = end(node);
-  if (source[s] !== '[' && source[s] !== '!') return null;
   if (source[e - 1] !== ')') return null;
-  // Search before this node's own `)`: a link around an image starts its `](` right at the image's end
-  const open = source.lastIndexOf('](', e - 3);
-  if (open < s) return null;
-  return destinationRange(source, open + 2, e - 1);
+  let close;
+  if (node.type === 'link') {
+    if (source[s] !== '[') return null;
+    close = node.children.length ? end(node.children.at(-1)) : s + 1;
+  } else {
+    if (!source.startsWith('![', s)) return null;
+    close = closingBracket(source, s + 2);
+  }
+  if (close < 0 || !source.startsWith('](', close)) return null;
+  return destinationRange(source, close + 2, e - 1);
 }
 
 /** Removes a block node and the blank line after it. */
@@ -230,9 +282,13 @@ function rewriteHtml(node, parent, source, ctx, images) {
   const s = start(node);
   const e = end(node);
   const html = source.slice(s, e);
-  // The build moves the site's own inline scripts into files, which would
-  // let a script from a tool repository through the CSP: refuse it here
-  if (/<script\b/i.test(html)) throw new Error(`<script> in ${ctx.sourcePath}; the docs site does not publish scripts from pages`);
+  // Only plain README markup gets through. The build moves the site's own
+  // inline scripts into files, so a <script> here would pass the CSP, and a
+  // <meta> refresh could send visitors elsewhere
+  for (const m of html.replace(/<!--[\s\S]*?-->/g, '').matchAll(/<\/?([a-zA-Z][a-zA-Z0-9-]*)/g)) {
+    const tag = m[1].toLowerCase();
+    if (!ALLOWED_TAGS.has(tag)) throw new Error(`Unsupported HTML <${tag}> in ${ctx.sourcePath}; the docs site publishes only plain README markup`);
+  }
   const inline = PHRASING_PARENTS.has(parent?.type);
   const tags = [...html.matchAll(IMG_TAG)].map((m) => m[0]);
 
@@ -256,8 +312,8 @@ function rewriteHtml(node, parent, source, ctx, images) {
       }
       return markdownImage(attr(tag, 'alt'), placed.url);
     })
-    .replace(A_HREF, (whole, prefix, double, single) => {
-      const href = double ?? single;
+    .replace(A_HREF, (whole, prefix, double, single, bare) => {
+      const href = double ?? single ?? bare;
       const next = resolveLink(href, ctx);
       return next === null ? whole : `${prefix}"${next}"`;
     });
@@ -315,8 +371,34 @@ export function rewrite(markdown, ctx) {
     if (ctx.dropBlocks?.some((text) => source.startsWith(text, start(node)))) edits.push(blockRemoval(source, node));
   }
 
+  // Definitions used by image references are images, wherever they point
+  const imageRefs = new Set();
+  visit(tree, 'imageReference', (node) => {
+    imageRefs.add(node.identifier);
+  });
+  const imageDefs = new Map();
+  visit(tree, 'definition', (node) => {
+    if (imageRefs.has(node.identifier) && !imageDefs.has(node.identifier)) {
+      imageDefs.set(node.identifier, placeImage(node.url, ctx, images));
+    }
+  });
+  const dropImage = (node, parent) => {
+    const onlyChild = parent?.type === 'link' && parent.children.length === 1;
+    edits.push(onlyChild ? { start: start(parent), end: end(parent), text: '' } : { start: start(node), end: end(node), text: '' });
+  };
+
   visit(tree, (node, _index, parent) => {
-    if (node.type === 'link') {
+    if (node.type === 'definition' && imageDefs.has(node.identifier)) {
+      const placed = imageDefs.get(node.identifier);
+      if (placed.action === 'drop') edits.push(blockRemoval(source, node));
+      if (placed.action === 'copy') {
+        const colon = source.indexOf(']:', start(node));
+        const [a, b] = destinationRange(source, colon + 2, end(node));
+        edits.push({ start: a, end: b, text: destination(placed.url) });
+      }
+    } else if (node.type === 'imageReference') {
+      if (imageDefs.get(node.identifier)?.action === 'drop') dropImage(node, parent);
+    } else if (node.type === 'link') {
       const range = inlineDestination(source, node);
       const next = range && resolveLink(node.url, ctx);
       if (next !== null && range) edits.push({ start: range[0], end: range[1], text: destination(next) });
@@ -328,8 +410,7 @@ export function rewrite(markdown, ctx) {
     } else if (node.type === 'image') {
       const placed = placeImage(node.url, ctx, images);
       if (placed.action === 'drop') {
-        const onlyChild = parent?.type === 'link' && parent.children.length === 1;
-        edits.push(onlyChild ? { start: start(parent), end: end(parent), text: '' } : { start: start(node), end: end(node), text: '' });
+        dropImage(node, parent);
       } else if (placed.action === 'copy') {
         const range = inlineDestination(source, node);
         if (range) edits.push({ start: range[0], end: range[1], text: destination(placed.url) });

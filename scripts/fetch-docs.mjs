@@ -105,10 +105,8 @@ export async function buildTool(tool, srcRoot, ref, outDir) {
     skipped = split.skipped;
     const siteUrls = new Map([[sourcePath, pageUrl(tool.slug, tool.introSlug)]]);
     const anchorUrls = new Map();
-    for (const p of split.pages) {
-      const [own, ...inner] = p.anchors;
-      anchorUrls.set(own, pageUrl(tool.slug, p.slug));
-      for (const anchor of inner) anchorUrls.set(anchor, `${pageUrl(tool.slug, p.slug)}#${anchor}`);
+    for (const [readmeAnchor, { page, anchor }] of split.anchorTargets) {
+      anchorUrls.set(readmeAnchor, pageUrl(tool.slug, page ?? tool.introSlug) + (anchor ? `#${anchor}` : ''));
     }
     const ctx = { ...base, sourcePath, siteUrls, anchorUrls };
     const parts = [{ slug: tool.introSlug, label: tool.name, order: 1, body: split.intro }, ...split.pages];

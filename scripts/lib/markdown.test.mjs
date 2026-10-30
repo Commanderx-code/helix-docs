@@ -90,7 +90,7 @@ describe('rewrite links', () => {
       ]),
     });
     expect(rewrite('[q](#quick-start) [k](#keys) [o](#other)\n', ctx).markdown).toBe(
-      '[q](/touchdown/quick-start/) [k](/touchdown/controls/#keys) [o](#other)\n',
+      `[q](/touchdown/quick-start/) [k](/touchdown/controls/#keys) [o](${blob}/README.md#other)\n`,
     );
   });
 
@@ -220,11 +220,6 @@ describe('splitReadme', () => {
     expect(skipped).toEqual(['Layout', 'License']);
   });
 
-  test('lists the anchors on each page', () => {
-    const { pages } = splitReadme(readme, sections);
-    expect(pages[0].anchors).toEqual(['controls', 'keys']);
-  });
-
   test('fails on a listed section the README lacks', () => {
     expect(() => splitReadme(readme, [...sections, { heading: 'Setup', slug: 'setup', label: 'Setup', order: 1 }])).toThrow(
       'Listed section missing: Setup',
@@ -275,5 +270,65 @@ describe('raw scripts', () => {
   test('are fine inside code', () => {
     const md = '```html\n<script>alert(1)</script>\n```\n\nUse `<script>` tags.\n';
     expect(rewrite(md, toolbox()).markdown).toBe(md);
+  });
+});
+
+describe('review fixes', () => {
+  test('a link title containing ]( keeps the destination edit in place', () => {
+    expect(rewrite('[x](GUIDE.md "see ](here")\n', toolbox()).markdown).toBe('[x](/toolbox/guide/ "see ](here")\n');
+    const ctx = toolbox({ repo: 'Commanderx-code/helix-boot', ref: 'v0.7.7', sourcePath: 'docs/look.md', siteUrls: new Map() });
+    expect(rewrite('![a](themes.jpg "t ](x")\n', ctx).markdown).toBe('![a](./themes.jpg "t ](x")\n');
+  });
+
+  test('a link above the repository root goes to the repository on GitHub', () => {
+    expect(rewrite('[up](../../x.md)\n', toolbox()).markdown).toBe(`[up](${tree})\n`);
+  });
+
+  test('an unquoted href is rewritten', () => {
+    expect(rewrite('<a href=GUIDE.md>g</a>\n', toolbox()).markdown).toBe('<a href="/toolbox/guide/">g</a>\n');
+  });
+
+  test('image references are copied', () => {
+    const ctx = toolbox({ repo: 'Commanderx-code/helix-boot', ref: 'v0.7.7', sourcePath: 'docs/look.md', siteUrls: new Map(), imageDir: 'out' });
+    const { markdown, images } = rewrite('![a][s]\n\n[s]: themes.jpg "Themes"\n', ctx);
+    expect(markdown).toBe('![a][s]\n\n[s]: ./themes.jpg "Themes"\n');
+    expect(images).toEqual([{ from: 'docs/themes.jpg', to: 'out/themes.jpg' }]);
+  });
+
+  test('image references are dropped with their definition', () => {
+    const { markdown, images } = rewrite('Text ![a][s] here.\n\n[s]: shot.png\n', toolbox({ images: false }));
+    expect(markdown).not.toMatch(/shot\.png|!\[a\]/);
+    expect(markdown).toMatch(/Text\s+here\./);
+    expect(images).toEqual([]);
+  });
+
+  test('raw GitHub URLs with refs/heads/ resolve to the repository path', () => {
+    const md = '<img src="https://raw.githubusercontent.com/Commanderx-code/Helix-toolbox/refs/heads/main/assets/x.png" alt="X">\n';
+    expect(rewrite(md, toolbox()).images).toEqual([{ from: 'assets/x.png', to: 'src/content/docs/toolbox/x.png' }]);
+  });
+
+  test('HTML outside the README allowlist fails the page', () => {
+    expect(() => rewrite('<meta http-equiv="refresh" content="0;url=https://x">\n', toolbox())).toThrow(/<meta>.*docs\/INSTALL\.md/);
+    expect(() => rewrite('Text <iframe src="/x"></iframe>\n', toolbox())).toThrow(/<iframe>/);
+    expect(rewrite('<!-- note -->\n\n<details><summary>s</summary>\n\nx\n\n</details>\n', toolbox()).markdown).toContain('<details>');
+  });
+});
+
+describe('splitReadme anchor targets', () => {
+  const readme = 'Intro.\n\n### Install\n\n## One\n\n### Usage\n\n## Two\n\n### Usage\n\n## Gone\n';
+  const sections = [
+    { heading: 'One', slug: 'one', label: 'One', order: 2 },
+    { heading: 'Two', slug: 'two', label: 'Two', order: 3 },
+  ];
+
+  test('map README anchors to the page and its own heading ids', () => {
+    const { anchorTargets } = splitReadme(readme, sections);
+    expect(Object.fromEntries(anchorTargets)).toEqual({
+      install: { page: null, anchor: 'install' },
+      one: { page: 'one', anchor: '' },
+      usage: { page: 'one', anchor: 'usage' },
+      two: { page: 'two', anchor: '' },
+      'usage-1': { page: 'two', anchor: 'usage' },
+    });
   });
 });
