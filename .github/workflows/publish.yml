@@ -1,0 +1,57 @@
+name: Publish
+
+# Builds the docs from each tool's latest release and pushes them to the
+# deploy branch, which the VPS pulls every two minutes. The daily run picks
+# up new tool releases.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '47 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npx astro check
+      - run: npm run check:dist
+      - name: Push to the deploy branch when the build changed
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          cd dist
+          git init -q -b deploy
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
+          git add -A
+          tree=$(git write-tree)
+          if git fetch -q --depth 1 origin deploy 2>/dev/null &&
+             [ "$(git rev-parse 'FETCH_HEAD^{tree}')" = "$tree" ]; then
+            echo "Build unchanged; nothing to publish."
+            exit 0
+          fi
+          git commit -q -m "Build of ${GITHUB_SHA}"
+          git push -q --force origin deploy
+          echo "Published $(git rev-parse HEAD)"
