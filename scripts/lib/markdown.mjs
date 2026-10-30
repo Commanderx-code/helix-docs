@@ -230,6 +230,9 @@ function rewriteHtml(node, parent, source, ctx, images) {
   const s = start(node);
   const e = end(node);
   const html = source.slice(s, e);
+  // The build moves the site's own inline scripts into files, which would
+  // let a script from a tool repository through the CSP: refuse it here
+  if (/<script\b/i.test(html)) throw new Error(`<script> in ${ctx.sourcePath}; the docs site does not publish scripts from pages`);
   const inline = PHRASING_PARENTS.has(parent?.type);
   const tags = [...html.matchAll(IMG_TAG)].map((m) => m[0]);
 
