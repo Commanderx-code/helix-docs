@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { extractTitle, rewrite, splitReadme } from './markdown.mjs';
+import { extractTitle, rewrite, splitReadme, summarize } from './markdown.mjs';
 
 const toolbox = (overrides = {}) => ({
   repo: 'Commanderx-code/Helix-toolbox',
@@ -330,5 +330,50 @@ describe('splitReadme anchor targets', () => {
       two: { page: 'two', anchor: '' },
       'usage-1': { page: 'two', anchor: 'usage' },
     });
+  });
+});
+
+describe('summarize', () => {
+  test('gives the first paragraph as plain text', () => {
+    expect(summarize('Start with the [README](../README.md) for `helix` and **more**.\n')).toBe(
+      'Start with the README for helix and more.',
+    );
+  });
+
+  test('skips HTML, image-only paragraphs and notes', () => {
+    const md = '<p align="center"><img src="a.svg"></p>\n\n![Build](b.svg) ![License](c.svg)\n\n:::note\nA note.\n:::\n\nReal text here.\n';
+    expect(summarize(md)).toBe('Real text here.');
+  });
+
+  test('joins wrapped lines', () => {
+    expect(summarize('One line\nand the next.\n')).toBe('One line and the next.');
+  });
+
+  test('cuts a long paragraph after the last whole sentence that fits', () => {
+    const first = 'A'.repeat(100) + '.';
+    expect(summarize(`${first} ${'B'.repeat(100)}.`)).toBe(first);
+  });
+
+  test('cuts one long sentence at a word, with an ellipsis', () => {
+    const text = Array.from({ length: 60 }, () => 'word').join(' ');
+    const summary = summarize(text);
+    expect(summary.length).toBeLessThanOrEqual(160);
+    expect(summary.endsWith('word…')).toBe(true);
+  });
+
+  test('drops a closing sentence that leads into a list', () => {
+    expect(summarize('A home screen for TVs. From the top:\n\n- one\n')).toBe('A home screen for TVs.');
+  });
+
+  test('ends a lone lead-in sentence with a period', () => {
+    expect(summarize('Set a favorite from the terminal:\n\n- one\n')).toBe('Set a favorite from the terminal.');
+  });
+
+  test('looks only before the first heading', () => {
+    expect(summarize('<!-- generated -->\n\n## Applications\n\n- a list\n\nLater text.\n')).toBeUndefined();
+  });
+
+  test('gives undefined when there is no paragraph', () => {
+    expect(summarize('## Only a heading\n\n- a list\n')).toBeUndefined();
   });
 });
