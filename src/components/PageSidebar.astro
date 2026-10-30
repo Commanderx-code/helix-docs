@@ -1,0 +1,24 @@
+---
+// The home page shows the latest releases where other pages show "On this page"
+import Default from '@astrojs/starlight/components/PageSidebar.astro';
+import Releases from './home/Releases.astro';
+
+const isHome = Astro.locals.starlightRoute.id === '';
+---
+
+{
+  isHome ? (
+    <div class="home-rail sl-hidden lg:sl-block">
+      <Releases />
+    </div>
+  ) : (
+    <Default />
+  )
+}
+
+<style>
+  .home-rail {
+    width: var(--sl-sidebar-width);
+    padding: 2.5rem var(--sl-sidebar-pad-x) 1rem;
+  }
+</style>

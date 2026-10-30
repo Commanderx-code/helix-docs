@@ -44,10 +44,14 @@ export default defineConfig({
       ],
       sidebar: tools.map(({ label, directory }) => ({
         label,
+        collapsed: true,
         items: [{ autogenerate: { directory } }],
       })),
       components: {
         Footer: './src/components/Footer.astro',
+        Header: './src/components/Header.astro',
+        PageSidebar: './src/components/PageSidebar.astro',
+        Sidebar: './src/components/Sidebar.astro',
         SocialIcons: './src/components/SocialIcons.astro',
       },
       lastUpdated: false,

@@ -1,36 +1,17 @@
 ---
 title: Helix Tech Docs
 description: Install, learn and fix the Helix tools. Search covers every tool.
-template: splash
 editUrl: false
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
-import versions from '../../generated/versions.json';
+import Intro from '../../components/home/Intro.astro';
+import ToolCards from '../../components/home/ToolCards.astro';
+import PageTree from '../../components/home/PageTree.astro';
 
-export const docsFor = (ref) => (ref === 'main' ? 'Docs for the latest code.' : `Docs for ${ref}.`);
+<Intro />
 
-Install, learn and fix the Helix tools. Search from the top of any page; it covers every tool.
+<ToolCards />
 
-<CardGrid>
-  <LinkCard
-    title="Helix Toolbox"
-    description={`Set up and look after a Linux machine from one menu in the terminal. ${docsFor(versions.toolbox)}`}
-    href="/toolbox/walkthrough/"
-  />
-  <LinkCard
-    title="Helix Boot"
-    description={`A multiboot rescue USB that builds itself from upstream sources. ${docsFor(versions.boot)}`}
-    href="/boot/"
-  />
-  <LinkCard
-    title="webOS Launcher"
-    description={`A minimal home screen for LG webOS TVs. ${docsFor(versions['webos-launcher'])}`}
-    href="/webos-launcher/"
-  />
-  <LinkCard
-    title="Touchdown"
-    description={`Live NFL scores and stats in your terminal. ${docsFor(versions.touchdown)}`}
-    href="/touchdown/"
-  />
-</CardGrid>
+## All pages
+
+<PageTree />
