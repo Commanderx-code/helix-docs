@@ -1,0 +1,33 @@
+---
+title: Helix Tech Docs
+description: Install, learn and fix the Helix tools. Search covers every tool.
+template: splash
+editUrl: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Install, learn and fix the Helix tools. Search from the top of any page; it covers every tool.
+
+<CardGrid>
+  <LinkCard
+    title="Helix Toolbox"
+    description="Set up and look after a Linux machine from one menu in the terminal."
+    href="/toolbox/walkthrough/"
+  />
+  <LinkCard
+    title="Helix Boot"
+    description="A multiboot rescue USB that builds itself from upstream sources."
+    href="/boot/"
+  />
+  <LinkCard
+    title="webOS Launcher"
+    description="A minimal home screen for LG webOS TVs."
+    href="/webos-launcher/"
+  />
+  <LinkCard
+    title="Touchdown"
+    description="Live NFL scores and stats in your terminal."
+    href="/touchdown/"
+  />
+</CardGrid>

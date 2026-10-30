@@ -1,0 +1,65 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+import { Image } from 'astro:assets';
+import logoDark from '../assets/brand/logo-on-dark.png';
+import logoLight from '../assets/brand/logo-on-light.png';
+
+const year = new Date().getFullYear();
+const years = year > 2026 ? `2026–${year}` : '2026';
+const links = [
+  { label: 'helixtech.app', href: 'https://helixtech.app/' },
+  { label: 'Tools', href: 'https://helixtech.app/#tools' },
+  { label: 'GitHub', href: 'https://github.com/Commanderx-code' },
+  { label: 'Privacy', href: 'https://helixtech.app/privacy/' },
+];
+---
+
+<Default />
+
+<div class="helix-footer">
+  <a href="https://helixtech.app/" class="logo">
+    <Image src={logoDark} alt="Helix Tech" class="light:sl-hidden" height={28} />
+    <Image src={logoLight} alt="Helix Tech" class="dark:sl-hidden" height={28} />
+  </a>
+  <nav aria-label="Helix Tech">
+    {links.map(({ label, href }) => <a href={href}>{label}</a>)}
+  </nav>
+  <p>© {years} Helix Tech LLC. Helix Tech™ is a trademark of Helix Tech LLC.</p>
+</div>
+
+<style>
+  .helix-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 2rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+  }
+  .logo {
+    display: flex;
+  }
+  .logo img {
+    height: 1.75rem;
+    width: auto;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+  }
+  nav a {
+    color: var(--sl-color-gray-2);
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: var(--sl-color-white);
+  }
+  p {
+    margin: 0;
+    flex-basis: 100%;
+  }
+</style>
