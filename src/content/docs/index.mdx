@@ -6,28 +6,31 @@ editUrl: false
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import versions from '../../generated/versions.json';
+
+export const docsFor = (ref) => (ref === 'main' ? 'Docs for the latest code.' : `Docs for ${ref}.`);
 
 Install, learn and fix the Helix tools. Search from the top of any page; it covers every tool.
 
 <CardGrid>
   <LinkCard
     title="Helix Toolbox"
-    description="Set up and look after a Linux machine from one menu in the terminal."
+    description={`Set up and look after a Linux machine from one menu in the terminal. ${docsFor(versions.toolbox)}`}
     href="/toolbox/walkthrough/"
   />
   <LinkCard
     title="Helix Boot"
-    description="A multiboot rescue USB that builds itself from upstream sources."
+    description={`A multiboot rescue USB that builds itself from upstream sources. ${docsFor(versions.boot)}`}
     href="/boot/"
   />
   <LinkCard
     title="webOS Launcher"
-    description="A minimal home screen for LG webOS TVs."
+    description={`A minimal home screen for LG webOS TVs. ${docsFor(versions['webos-launcher'])}`}
     href="/webos-launcher/"
   />
   <LinkCard
     title="Touchdown"
-    description="Live NFL scores and stats in your terminal."
+    description={`Live NFL scores and stats in your terminal. ${docsFor(versions.touchdown)}`}
     href="/touchdown/"
   />
 </CardGrid>

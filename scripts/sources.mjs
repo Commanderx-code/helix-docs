@@ -8,7 +8,7 @@
  * @typedef {{
  *   slug: string, name: string, repo: string, kind: 'docs' | 'readme',
  *   docsDir?: string, pages?: Page[], sections?: Section[], introSlug?: string,
- *   excludeImages: string[], images: boolean,
+ *   excludeImages: string[], images: boolean, dropBlocks?: string[],
  * }} ToolSource
  */
 
@@ -86,6 +86,8 @@ export const TOOLS = [
     excludeImages: [],
     // The screenshots show a wallpaper that is not ours to republish
     images: false,
+    // The screenshot table and its caption, which are empty without the images
+    dropBlocks: ['| Plex rows |', '*Shown with a wallpaper'],
   },
   {
     slug: 'touchdown',

@@ -45,3 +45,7 @@ describe('TOOLS', () => {
     }
   });
 });
+
+test('webOS Launcher drops the screenshot table and its caption', () => {
+  expect(TOOLS.find((t) => t.slug === 'webos-launcher').dropBlocks).toEqual(['| Plex rows |', '*Shown with a wallpaper']);
+});

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "fetch": "node scripts/fetch-docs.mjs",
+    "build": "npm run fetch && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run"
