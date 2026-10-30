@@ -1,0 +1,74 @@
+/* The helixtech.app colors and type, mapped onto Starlight's variables.
+   Values come from helix-site src/styles/global.css. */
+:root {
+  --sl-font: 'Fira Sans';
+  --sl-font-mono: 'JetBrains Mono Variable';
+  --helix-display: 'Fira Sans Condensed', var(--__sl-font);
+  --helix-violet: #a78bfa;
+
+  --sl-color-white: #eceef4;
+  --sl-color-gray-1: #eceef4;
+  --sl-color-gray-2: #b4b9c9;
+  --sl-color-gray-3: #8b91a3;
+  --sl-color-gray-4: #4a5064;
+  --sl-color-gray-5: #2e3446;
+  --sl-color-gray-6: #161a24;
+  --sl-color-black: #0b0d12;
+
+  --sl-color-accent-low: #10302d;
+  --sl-color-accent: #5eead4;
+  --sl-color-accent-high: #99f6e4;
+
+  --sl-color-bg-nav: #11141c;
+  --sl-color-bg-sidebar: #11141c;
+  --sl-color-bg-inline-code: #232837;
+  --sl-color-hairline-light: #2e3446;
+  --sl-color-hairline: #232837;
+}
+
+:root[data-theme='light'] {
+  --helix-violet: #6d28d9;
+
+  --sl-color-white: #0f1220;
+  --sl-color-gray-1: #1d2233;
+  --sl-color-gray-2: #3a4054;
+  --sl-color-gray-3: #5b6178;
+  --sl-color-gray-4: #8b91a3;
+  --sl-color-gray-5: #c9cede;
+  --sl-color-gray-6: #eef0f6;
+  --sl-color-gray-7: #f6f7fb;
+  --sl-color-black: #ffffff;
+
+  --sl-color-accent-low: #ccfbf1;
+  --sl-color-accent: #0f766e;
+  --sl-color-accent-high: #0b5a54;
+
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: #f6f7fb;
+  --sl-color-bg-inline-code: #eef0f6;
+  --sl-color-hairline-light: #c9cede;
+  --sl-color-hairline: #dde1ec;
+}
+
+h1,
+.sl-markdown-content :is(h2, h3) {
+  font-family: var(--helix-display);
+  letter-spacing: -0.01em;
+}
+h1 {
+  font-weight: 800;
+}
+.sl-markdown-content :is(h2, h3) {
+  font-weight: 700;
+}
+
+/* Links in the text are violet, as on helixtech.app; the mint accent marks where you are */
+.sl-markdown-content a:not(:where(.not-content *)) {
+  color: var(--helix-violet);
+  text-underline-offset: 0.2em;
+}
+
+.site-title img {
+  height: 1.75rem;
+  width: auto;
+}
