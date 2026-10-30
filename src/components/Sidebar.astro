@@ -1,0 +1,66 @@
+---
+// Search sits at the top of the sidebar, as the only search on the page;
+// on phones it opens with the menu. A note at the bottom asks for fixes.
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import Search from '@astrojs/starlight/components/Search.astro';
+---
+
+<div class="sidebar-search"><Search /></div>
+<Default />
+<p class="sidebar-note">
+  Something wrong or missing? <a href="https://github.com/Commanderx-code/helix-docs/issues/new">Open an issue</a>.
+</p>
+
+<style>
+  .sidebar-search,
+  .sidebar-note {
+    position: sticky;
+    z-index: 1;
+    margin-inline: calc(-1 * var(--sl-sidebar-pad-x));
+    padding-inline: var(--sl-sidebar-pad-x);
+    background-color: var(--sl-color-black);
+  }
+  .sidebar-search {
+    top: 0;
+    margin-top: -1rem;
+    padding-block: 1rem 0.25rem;
+  }
+  .sidebar-search :global(button[data-open-modal]) {
+    width: 100%;
+    max-width: none;
+    height: 2.5rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding-inline: 0.75rem 0.5rem;
+    background-color: var(--sl-color-gray-6);
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+  .sidebar-search :global(button[data-open-modal]:hover) {
+    border-color: var(--sl-color-gray-3);
+    color: var(--sl-color-white);
+  }
+  .sidebar-search :global(button[data-open-modal] > span) {
+    display: block;
+  }
+  .sidebar-search :global(button[data-open-modal] > kbd) {
+    margin-inline-start: auto;
+  }
+  .sidebar-note {
+    bottom: 0;
+    margin-top: auto;
+    padding-block: 1rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+  .sidebar-note a {
+    color: var(--sl-color-white);
+  }
+  @media (min-width: 50rem) {
+    .sidebar-search,
+    .sidebar-note {
+      background-color: var(--sl-color-bg-sidebar);
+    }
+  }
+</style>

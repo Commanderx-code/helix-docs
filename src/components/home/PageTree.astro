@@ -1,0 +1,60 @@
+---
+import { toolDocs } from './data';
+
+const tools = await toolDocs();
+---
+
+<div class="tree not-content">
+  {
+    tools.map((tool) => (
+      <details>
+        <summary>
+          {tool.name} <span class="ref">{tool.ref === 'main' ? 'latest code' : tool.ref}</span>
+        </summary>
+        <ul>
+          {tool.pages.map((page) => (
+            <li>
+              <a href={page.href}>{page.title}</a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  .tree {
+    margin-top: 1rem;
+  }
+  summary {
+    padding: 0.6rem 0.25rem;
+    color: var(--sl-color-white);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  summary::marker {
+    color: var(--sl-color-gray-3);
+  }
+  .ref {
+    margin-inline-start: 0.5rem;
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+    font-weight: 400;
+  }
+  ul {
+    margin: 0 0 0.75rem 0.4rem;
+    padding: 0 0 0 1rem;
+    border-inline-start: 1px solid var(--sl-color-hairline-light);
+    list-style: none;
+  }
+  li a {
+    display: block;
+    padding: 0.3rem 0;
+    color: var(--sl-color-gray-2);
+    text-decoration: none;
+  }
+  li a:hover {
+    color: var(--sl-color-white);
+  }
+</style>

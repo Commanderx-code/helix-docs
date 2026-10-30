@@ -1,0 +1,64 @@
+---
+import { toolDocs } from './data';
+
+const tools = await toolDocs();
+---
+
+<section class="releases" aria-labelledby="releases-h">
+  <h2 id="releases-h">Latest releases</h2>
+  <ul>
+    {
+      tools.map((tool) => (
+        <li>
+          <a href={tool.href}>{tool.name}</a>
+          <a class="ref" href={tool.releaseUrl}>
+            {tool.ref === 'main' ? 'latest code' : tool.ref}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  /* The home page has no "On this page" bar on phones */
+  :global(:root:has(.releases)) {
+    --sl-mobile-toc-height: 0rem;
+  }
+  .releases {
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+  }
+  h2 {
+    margin: 0 0 0.75rem;
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-h5);
+    font-weight: 600;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+  }
+  a {
+    color: var(--sl-color-gray-1);
+    font-size: var(--sl-text-sm);
+    text-decoration: none;
+  }
+  a.ref {
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-xs);
+    white-space: nowrap;
+  }
+  a:hover {
+    color: var(--sl-color-white);
+  }
+</style>

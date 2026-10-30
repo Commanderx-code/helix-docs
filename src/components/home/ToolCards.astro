@@ -1,0 +1,65 @@
+---
+import ToolIcon from './ToolIcon.astro';
+import { toolDocs } from './data';
+
+const tools = await toolDocs();
+---
+
+<ul class="cards not-content">
+  {
+    tools.map((tool) => (
+      <li>
+        <a href={tool.href}>
+          <ToolIcon tool={tool.slug} />
+          <span>{tool.name}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 0;
+    list-style: none;
+  }
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    height: 100%;
+    min-height: 13rem;
+    padding: 2rem 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    color: var(--sl-color-white);
+    text-align: center;
+    text-decoration: none;
+  }
+  a:hover {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-accent-high);
+  }
+  @media (max-width: 50rem) {
+    a {
+      min-height: 9rem;
+      gap: 1rem;
+      padding: 1.25rem 0.75rem;
+    }
+    a :global(svg) {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  span {
+    font-size: var(--sl-text-lg);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+</style>

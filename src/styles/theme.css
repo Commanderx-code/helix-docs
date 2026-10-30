@@ -72,3 +72,40 @@ h1 {
   height: 1.75rem;
   width: auto;
 }
+
+/* Sidebar groups read as folders, closed until you open one or are on one of their pages */
+.sidebar-content .top-level > li + li {
+  margin-top: 0.125rem;
+}
+.sidebar-content .top-level > li > details > summary {
+  padding-block: 0.45em;
+  border-radius: 0.25rem;
+}
+.sidebar-content .top-level > li > details > summary:hover {
+  background-color: var(--sl-color-gray-6);
+}
+.sidebar-content .top-level > li > details > summary .large {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--sl-text-sm);
+  font-weight: 500;
+  color: var(--sl-color-gray-1);
+}
+.sidebar-content .top-level > li > details > summary .large::before {
+  content: '';
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.75' stroke-linejoin='round'%3E%3Cpath d='M3 6.5A1.5 1.5 0 0 1 4.5 5h4.2l2 2h8.8A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+.sidebar-content .top-level > li > details > summary .caret {
+  width: 1rem;
+  height: 1rem;
+  color: var(--sl-color-gray-3);
+}
+.sidebar-content .top-level > li > details > ul {
+  margin-block: 0.25rem 0.5rem;
+}
