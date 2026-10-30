@@ -48,6 +48,7 @@ describe('buildTool', () => {
     expect(page.startsWith('---\ntitle: Installing Helix Toolbox\n')).toBe(true);
     expect(page).toContain('editUrl: https://github.com/Commanderx-code/Helix-toolbox/edit/main/docs/INSTALL.md');
     expect(page).toContain('sidebar:\n  order: 1\n');
+    expect(page).toContain('description: Read the guide first.\n');
     expect(page).not.toContain('# Installing Helix Toolbox');
   });
 
@@ -81,6 +82,8 @@ describe('buildTool', () => {
     const quick = await readFile(path.join(out, 'quick-start.md'), 'utf8');
     expect(quick).toContain('title: Quick start');
     expect(quick).toContain('Run it.');
+    expect(quick).toContain('description: Run it.\n');
+    expect(index).toContain('description: Live scores. See Quick start.\n');
   });
 
   test('reports drop texts the source no longer has', async () => {

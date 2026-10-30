@@ -5,7 +5,7 @@ import { copyFile, lstat, mkdir, mkdtemp, readFile, realpath, rm, writeFile } fr
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { extractTitle, rewrite, splitReadme } from './lib/markdown.mjs';
+import { extractTitle, rewrite, splitReadme, summarize } from './lib/markdown.mjs';
 import { TOOLS } from './sources.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
@@ -47,9 +47,11 @@ const PLAIN = /^[A-Za-z0-9][A-Za-z0-9 .,'()/+–—-]*$/;
 const yamlString = (value) => (PLAIN.test(value) && !value.endsWith(' ') ? value : JSON.stringify(value));
 
 function page({ title, order, editUrl, body }) {
+  const description = summarize(body);
   return [
     '---',
     `title: ${yamlString(title)}`,
+    ...(description ? [`description: ${yamlString(description)}`] : []),
     'sidebar:',
     `  order: ${order}`,
     `editUrl: ${editUrl}`,

@@ -54,6 +54,7 @@ export default defineConfig({
         Sidebar: './src/components/Sidebar.astro',
         SocialIcons: './src/components/SocialIcons.astro',
       },
+      routeMiddleware: './src/routeData.ts',
       lastUpdated: false,
       pagefind: true,
     }),
