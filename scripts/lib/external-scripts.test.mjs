@@ -25,4 +25,17 @@ describe('externalizeScripts', () => {
     const html = '<script src="/a.js"></script><script type="application/ld+json">{"a":1}</script>';
     expect(externalizeScripts(html)).toEqual({ html, scripts: [] });
   });
+
+  test('leaves script text inside attributes alone', () => {
+    const html =
+      '<button data-code="<script>alert(1)</script><script src=/_scripts/x.js></script>">c</button><a title="<script>">t</a>';
+    expect(externalizeScripts(html)).toEqual({ html, scripts: [] });
+  });
+
+  test('moves a real script after an attribute that mentions one', () => {
+    const { html, scripts } = externalizeScripts('<button data-code="run <script> here">c</button><script>real()</script>');
+    expect(scripts.map((s) => s.content)).toEqual(['real()']);
+    expect(html).toBe(`<button data-code="run <script> here">c</button><script src="/${scripts[0].path}"></script>`);
+  });
 });
+

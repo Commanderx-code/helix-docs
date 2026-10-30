@@ -6,8 +6,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-const SCRIPT = /<script\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/script>/gi;
+import { elements } from './html.mjs';
 
 /**
  * @param {string} html
@@ -15,13 +14,17 @@ const SCRIPT = /<script\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/script>/gi;
  */
 export function externalizeScripts(html) {
   const scripts = [];
-  const out = html.replace(SCRIPT, (whole, attrs, content) => {
-    if (/\bsrc\s*=/i.test(attrs) || /\btype\s*=\s*["']?application\/ld\+json/i.test(attrs)) return whole;
-    const hash = createHash('sha256').update(content).digest('hex').slice(0, 16);
+  const edits = [];
+  for (const el of elements(html)) {
+    if (el.tag !== 'script' || el.attrs.has('src') || el.attrs.get('type') === 'application/ld+json') continue;
+    const hash = createHash('sha256').update(el.text).digest('hex').slice(0, 16);
     const file = `_scripts/${hash}.js`;
-    scripts.push({ path: file, content });
-    return `<script${attrs} src="/${file}"></script>`;
-  });
+    scripts.push({ path: file, content: el.text });
+    // Keep the start tag as written, minus its closing '>'
+    edits.push({ start: el.start, end: el.end, text: `${html.slice(el.start, el.startTagEnd - 1)} src="/${file}"></script>` });
+  }
+  let out = html;
+  for (const edit of edits.reverse()) out = out.slice(0, edit.start) + edit.text + out.slice(edit.end);
   return { html: out, scripts };
 }
 

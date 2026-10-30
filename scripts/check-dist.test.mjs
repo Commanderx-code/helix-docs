@@ -7,8 +7,8 @@ describe('checkHtml', () => {
   test('flags inline scripts', () => {
     expect(check('<script>x()</script>')).toHaveLength(1);
     expect(check('<script type="module">x()</script>')).toHaveLength(1);
-    expect(check('<script src="/a.js"></script>')).toEqual([]);
-    expect(check('<script type="module" src="/a.js"></script>')).toEqual([]);
+    expect(check('<script src="/_scripts/a.js"></script>')).toEqual([]);
+    expect(check('<script type="module" src="/_astro/a.js"></script>')).toEqual([]);
     expect(check('<script type="application/ld+json">{}</script>')).toEqual([]);
   });
 
@@ -46,4 +46,14 @@ describe('checkHtml', () => {
   test('names the file in each problem', () => {
     expect(check('<style>a{}</style>')[0]).toContain('page.html');
   });
+
+  test('reads script text inside attributes as text', () => {
+    expect(check('<button data-code="<script>x()</script>">c</button>')).toEqual([]);
+  });
+
+  test('flags scripts from paths the build does not write', () => {
+    expect(check('<script src="/evil.js"></script>')).toHaveLength(1);
+    expect(check('<script type="module" src="/_astro/a.js"></script><script src="/_scripts/b.js"></script>')).toEqual([]);
+  });
 });
+
