@@ -9,8 +9,8 @@ Home Assistant is the part of the lab the rest of the house notices. It
 runs on the same [board](/homelab/zimaboard/) as everything else, in a
 container, with Zigbee
 devices reaching it through Zigbee2MQTT and a Mosquitto broker. This page
-is about how the three fit together and the lessons that cost an evening
-each; it leaves out the addresses, entity names and tokens of this one
+is about how the three fit together and what went wrong along the way; it
+leaves out the addresses, entity names and tokens of this one
 house.
 
 ## The three containers
@@ -26,20 +26,17 @@ data disk, which is the only thing that must survive a rebuild.
 configuration, data and log directories persisted separately.
 
 **Zigbee2MQTT** owns the Zigbee network. The coordinator is a network
-coordinator, not a USB stick: Zigbee2MQTT talks to it over TCP, so the
-board does not need a USB device passed into a container and the
-coordinator can sit where the radio coverage is best rather than next to
-the server. Zigbee2MQTT depends on Mosquitto and starts after it.
+device, not a USB stick: Zigbee2MQTT talks to it over TCP, so no USB device
+is passed into a container. Zigbee2MQTT depends on Mosquitto and starts after it.
 
 The web interface of Zigbee2MQTT asks for an access code. Without one the
-interface's websocket closes with code 4401 and the page looks broken
-rather than locked. Home Assistant never uses that interface; it talks to
-Zigbee2MQTT over MQTT, so the code can be as awkward as you like. From
-outside the LAN the interface also sits behind the reverse proxy's
-allow-list and single sign-on login, described under
+interface's websocket closes with code 4401. Home Assistant never uses that interface; it talks to
+Zigbee2MQTT over MQTT, so the code does not affect it. Through the
+reverse proxy the interface also needs the allow-list and the single
+sign-on login, described under
 [how traffic gets to a service](/homelab/zimaboard/#how-traffic-gets-to-a-service).
 
-All three images are pinned by digest. An update is a deliberate change to
+The Home Assistant image is pinned by digest. An update is a deliberate change to
 the digest, a pull and a recreate, not a restart that happens to fetch
 something newer.
 
@@ -47,8 +44,7 @@ something newer.
 
 Zigbee2MQTT exits when it loses the coordinator. During a short network
 drop the coordinator went away, Zigbee2MQTT exited with an error, and
-Docker's restart policy gave up while the coordinator was still
-unreachable. The lights came back; the Zigbee network did not.
+Docker stopped restarting it while the coordinator was still unreachable.
 
 A systemd timer on the host now runs a small script every two minutes. If
 the container has exited with a non-zero code and the coordinator's port
@@ -78,8 +74,7 @@ made admin only too, so that account's sidebar shows only what it uses.
 
 The dashboard definition is YAML in version control, applied through the
 websocket API by a script that saves the current configuration to a backup
-first and can restore any backup. Editing in the browser is fine for
-trying a card; the file is what makes it reproducible.
+first and can restore any backup.
 
 ## Integrations worth noting
 
@@ -124,8 +119,8 @@ weather is for somewhere else.
 
 ## Automations
 
-Automations are built in the interface and alert one phone through the
-companion app. A few that earned their place:
+Automations are built in the interface and alert through the
+companion app. A few of them:
 
 - **Everything off when nobody is home.** The home zone at zero people for
   ten minutes with something still on runs a script that turns off the
@@ -140,7 +135,7 @@ companion app. A few that earned their place:
   automation until the topic is updated.
 - **Lights on when almost home.** Between late evening and early morning,
   the Proximity integration's distance and direction sensors turn the
-  lights on when the person is within about a mile and heading home.
+  lights on when the person is within a little over a mile and heading home.
 - **TV left on.** A TV on for two hours with nothing playing in that room
   gets a prompt on the phone with a Keep-on button; without a tap it turns
   off ten minutes later. Apps that report no playback look idle, which is
@@ -167,12 +162,6 @@ Zigbee2MQTT's data, restore the Compose files and the environment values
 that are kept out of version control, start Mosquitto, start Zigbee2MQTT,
 then check the MQTT and Zigbee entities in Home Assistant. Home Assistant's
 configuration directory is in the host's encrypted nightly backup, and its
-own backup feature runs nightly as a second, application-level copy; that
-restart at midnight is also why "home since" times are kept in sensors
+own automatic backup is a second, application-level copy. The midnight
+backup restarts Home Assistant, which is why "home since" times are kept in sensors
 that survive a restart rather than read from an entity's last change.
-
-## What is next
-
-- The air conditioners, once their units are back on the network.
-- Fewer things built in the interface and more in YAML under version
-  control, so a rebuild is a copy rather than a day of clicking.
