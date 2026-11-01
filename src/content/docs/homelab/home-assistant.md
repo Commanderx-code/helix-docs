@@ -125,31 +125,20 @@ companion app. A few of them:
 - **Everything off when nobody is home.** The home zone at zero people for
   ten minutes with something still on runs a script that turns off the
   lights and the players, then reports the count.
-- **A lamp on a schedule** that bends to the people: off early when one
-  person leaves, on early when the other gets home late, and on for
-  fifteen minutes when someone arrives in the small hours.
 - **A Zigbee button** with three actions: single press toggles one room,
   double press another, hold all of them. A long press arrives as `hold`
   then `release`, not `long`. The MQTT topic contains the device's friendly
   name, so renaming the button in Zigbee2MQTT silently breaks the
   automation until the topic is updated.
-- **Lights on when almost home.** Between late evening and early morning,
-  the Proximity integration's distance and direction sensors turn the
-  lights on when the person is within a little over a mile and heading home.
 - **TV left on.** A TV on for two hours with nothing playing in that room
   gets a prompt on the phone with a Keep-on button; without a tap it turns
   off ten minutes later. Apps that report no playback look idle, which is
   why it asks first.
-- **Camera privacy.** The camera is switched off while anyone is home and
-  back on a minute after the house is empty, then the Generic Camera entry
-  is reloaded so the live view returns. It keeps answering pings while off,
-  so its monitor stays green.
 - **Alerts** for a monitor down, waiting container images, a failed backup
   (the host's nightly backup job posts to a local-only webhook on
   failure), a slow upload with the evidence attached, modem trouble, a
   certificate with under 14 days left, a firewall update, the Zigbee bridge
-  down, low batteries, low ink, a full dehumidifier bucket, and a person on
-  the camera while nobody is home.
+  down, low batteries, low ink and a full dehumidifier bucket.
 
 The Zigbee bridge alert distinguishes `off`, meaning Zigbee2MQTT stopped,
 from `unavailable`, meaning Home Assistant lost MQTT and Mosquitto is
