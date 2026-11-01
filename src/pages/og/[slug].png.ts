@@ -1,4 +1,4 @@
-// One share card for the home page and one per tool, used by every page of that tool
+// One share card for the home page, one per tool, used by every page of that tool, and one for the homelab pages
 import type { APIRoute } from 'astro';
 import { TOOLS } from '../../../scripts/sources.mjs';
 import { pitches } from '../../data/pitches';
@@ -16,6 +16,7 @@ const pages: Record<string, Card> = {
       { eyebrow: 'Documentation', title: tool.name, text: pitches[tool.slug]?.text ?? '', accent: pitches[tool.slug]?.accent },
     ]),
   ),
+  homelab: { eyebrow: 'Documentation', title: 'Homelab', text: pitches.homelab.text, accent: pitches.homelab.accent },
 };
 
 export function getStaticPaths() {

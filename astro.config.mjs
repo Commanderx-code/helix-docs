@@ -42,11 +42,17 @@ export default defineConfig({
         '@fontsource-variable/jetbrains-mono',
         './src/styles/theme.css',
       ],
-      sidebar: tools.map(({ label, directory }) => ({
-        label,
-        collapsed: true,
-        items: [{ autogenerate: { directory } }],
-      })),
+      sidebar: [
+        ...tools.map(({ label, directory }) => ({
+          label,
+          collapsed: true,
+          items: [{ autogenerate: { directory } }],
+        })),
+        // Written here, not fetched: see src/content/docs/homelab/
+        { label: 'Homelab', collapsed: true, items: [{ autogenerate: { directory: 'homelab' } }] },
+      ],
+      // For the pages kept in this repository; a fetched page sets its own
+      editLink: { baseUrl: 'https://github.com/Commanderx-code/helix-docs/edit/main/' },
       components: {
         Footer: './src/components/Footer.astro',
         Header: './src/components/Header.astro',
