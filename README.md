@@ -12,6 +12,12 @@ goes there.
 - `scripts/fetch-docs.mjs` downloads and converts them.
 - `scripts/check-dist.mjs` checks the built site before it is published.
 
+The one exception is the Homelab section, `src/content/docs/homelab/`,
+which is written in this repository: pages about the home network, written
+for someone building something like it, with nothing that maps the network
+itself. A new page is a Markdown file there with a `title` and a
+`sidebar.order` in its front matter.
+
 ## Build
 
 ```sh
