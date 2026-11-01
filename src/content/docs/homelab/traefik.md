@@ -13,18 +13,14 @@ not be a port number and a password away. This page is about the shape
 of it and the decisions; it leaves out the names, addresses and tokens of
 this one network.
 
-Traefik replaced Nginx Proxy Manager. The point-and-click proxy was fine
-until the access lists and the headers wanted to be in version control,
-and then the files were the feature.
+Traefik replaced Nginx Proxy Manager.
 
 ## The container
 
-- The image is pinned by digest and updated like the other pinned images,
-  on purpose and one at a time.
+- The image is pinned by digest and updated like the other pinned images.
 - It runs as an unprivileged user with a read-only root filesystem, every
   capability dropped and `no-new-privileges`. Ports 80 and 443 work
-  because the host lowers the unprivileged port start to zero, which is a
-  smaller grant than a capability on the container.
+  because the unprivileged port start is lowered to zero.
 - No Docker socket. Routes are plain files watched by Traefik's file
   provider, not labels read off containers. The proxy therefore cannot
   enumerate or control the other containers, and a route is a file that
@@ -66,8 +62,8 @@ upstream, and a middleware chain. Upstreams that speak HTTPS are verified
 against their real certificate where they have one. The firewall's
 interface is verified against its own public certificate, the access
 point against the vendor's root certificate, and a printer with a
-certificate that names nobody is proxied without verification, which is
-what it was before and is noted as such.
+certificate that names nobody is proxied without verification,
+as it was before.
 
 The middleware chain is always in the same order:
 
@@ -104,7 +100,7 @@ It checks that the proxy can reach the upstream, writes the route file and
 copies it to the host, waits until the proxy's API shows the route
 enabled, adds the DNS rewrite in both resolvers, then requests the page
 through the proxy. The wildcard certificate already covers the name. A
-monitor and a dashboard tile are separate, deliberately. Removing an app
+monitor and a dashboard tile are separate. Removing an app
 is the route file and the two DNS records, in reverse.
 
 The script asks the API through the loopback-only entry point, with
@@ -124,7 +120,7 @@ when it took over from the old proxy:
   HTTP settings rather than YAML. Without that entry it answers 400 to
   every proxied request.
 
-Keep the list. Retiring the old proxy was a scripted pass over the same
+Retiring the old proxy was a scripted pass over the same
 four places plus the monitor, with the old data archived encrypted before
 it was deleted.
 
